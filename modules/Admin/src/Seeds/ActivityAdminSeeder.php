@@ -1,6 +1,6 @@
 <?php
 
-namespace GuojiangClub\Activity\Admin\Seeds;
+namespace GuoJiangClub\Activity\Admin\Seeds;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;

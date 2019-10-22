@@ -6,10 +6,10 @@
  * Time: 21:38
  */
 
-namespace GuojiangClub\Activity\Admin\Models;
+namespace GuoJiangClub\Activity\Admin\Models;
 
 
-use ElementVip\Activity\Core\Models\Discount\Action;
+use GuoJiangClub\Activity\Core\Models\Discount\Action;
 
 class DiscountAction extends Action
 {

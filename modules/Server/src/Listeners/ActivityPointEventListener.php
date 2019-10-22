@@ -1,15 +1,8 @@
 <?php
 
-namespace GuojiangClub\Activity\Server\Listeners;
+namespace GuoJiangClub\Activity\Server\Listeners;
 
-use ElementVip\Component\User\Models\User;
-use ElementVip\Component\Point\Repository\PointRepository;
-use ElementVip\Notifications\PointRecord;
-use ElementVip\Notifications\ActivityJoinSuccess;
-use GuojiangClub\Activity\Server\Messages\ActivityJoinSuccessMessage;
-use Overtrue\EasySms\Exceptions\NoGatewayAvailableException;
-use iBrand\Sms\Jobs\DbLogger;
-use Overtrue\EasySms\EasySms;
+use iBrand\Component\Point\Repository\PointRepository;
 
 class ActivityPointEventListener
 {
@@ -37,7 +30,6 @@ class ActivityPointEventListener
 			$note  = '活动签到奖励积分';
 		}
 
-		$user = User::find($user_id);
 		if ($point > 0) {
 			//积分报名
 			$this->pointRepository->create([
@@ -47,31 +39,6 @@ class ActivityPointEventListener
 				'note'    => $note,
 				'value'   => $point,
 			]);
-
-			$user->notify(new PointRecord(['point' => [
-				'user_id' => $user->id,
-				'action'  => 'activity',
-				'note'    => $note,
-				'value'   => $point,
-			]]));
-		}
-
-		if ($type == self::ACTIVITY_JOIN && 1 == $activity->send_message) {
-			if ($user->mobile) {
-				try {
-					$config  = config('ibrand.sms.easy_sms');
-					$easySms = new EasySms($config);
-					$message = new ActivityJoinSuccessMessage($activity);
-					$easySms->send($user->mobile, $message);
-				} catch (NoGatewayAvailableException $noGatewayAvailableException) {
-					$noGatewayAvailableException->results;
-				} catch (\Exception $exception) {
-					\Log::info($exception->getMessage());
-				}
-			}
-
-			//模板消息
-			$user->notify(new ActivityJoinSuccess(['activity' => $activity]));
 		}
 	}
 
@@ -79,7 +46,7 @@ class ActivityPointEventListener
 	{
 		$events->listen(
 			'on.member.activity.status.change',
-			'GuojiangClub\Activity\Server\Listeners\ActivityPointEventListener@point'
+			'GuoJiangClub\Activity\Server\Listeners\ActivityPointEventListener@point'
 		);
 	}
 }

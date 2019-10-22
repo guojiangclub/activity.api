@@ -1,9 +1,9 @@
 <?php
 
-namespace GuojiangClub\Activity\Admin\Http\Controllers;
+namespace GuoJiangClub\Activity\Admin\Http\Controllers;
 
-use ElementVip\Backend\Http\Controllers\Controller;
-use ElementVip\Activity\Core\Models\City;
+use iBrand\Backend\Http\Controllers\Controller;
+use GuoJiangClub\Activity\Core\Models\City;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use Validator;

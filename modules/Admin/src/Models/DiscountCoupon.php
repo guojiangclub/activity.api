@@ -6,10 +6,10 @@
  * Time: 13:30
  */
 
-namespace GuojiangClub\Activity\Admin\Models;
+namespace GuoJiangClub\Activity\Admin\Models;
 
 
-use ElementVip\Activity\Core\Models\Discount\Coupon;
+use GuoJiangClub\Activity\Core\Models\Discount\Coupon;
 use ElementVip\Component\User\Models\User;
 
 class DiscountCoupon extends Coupon

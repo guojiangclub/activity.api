@@ -1,6 +1,6 @@
 <?php
 
-namespace GuojiangClub\Activity\Server\Transformers;
+namespace GuoJiangClub\Activity\Server\Transformers;
 
 class CouponTransformer extends BaseTransformer
 {

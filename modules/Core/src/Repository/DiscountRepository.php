@@ -1,6 +1,6 @@
 <?php
 
-namespace GuojiangClub\Activity\Core\Repository;
+namespace GuoJiangClub\Activity\Core\Repository;
 
 use Prettus\Repository\Contracts\RepositoryInterface;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace GuojiangClub\Activity\Core\Discount\Actions;
+namespace GuoJiangClub\Activity\Core\Discount\Actions;
 
-use GuojiangClub\Activity\Core\Models\Adjustment;
-use ElementVip\Component\Discount\Contracts\DiscountActionContract;
-use ElementVip\Component\Discount\Contracts\DiscountContract;
-use ElementVip\Component\Discount\Contracts\DiscountSubjectContract;
+use GuoJiangClub\Activity\Core\Models\Adjustment;
+use iBrand\Component\Discount\Contracts\DiscountActionContract;
+use iBrand\Component\Discount\Contracts\DiscountContract;
+use iBrand\Component\Discount\Contracts\DiscountSubjectContract;
 
 /**
  * Created by PhpStorm.

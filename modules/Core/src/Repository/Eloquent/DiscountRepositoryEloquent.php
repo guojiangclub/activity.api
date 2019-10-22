@@ -1,9 +1,9 @@
 <?php
-namespace GuojiangClub\Activity\Core\Repository\Eloquent;
+namespace GuoJiangClub\Activity\Core\Repository\Eloquent;
 
 use Carbon\Carbon;
-use GuojiangClub\Activity\Core\Models\Discount\Discount;
-use GuojiangClub\Activity\Core\Repository\DiscountRepository;
+use GuoJiangClub\Activity\Core\Models\Discount\Discount;
+use GuoJiangClub\Activity\Core\Repository\DiscountRepository;
 use Prettus\Repository\Eloquent\BaseRepository;
 
 class DiscountRepositoryEloquent extends \ElementVip\Component\Discount\Repositories\Eloquent\DiscountRepositoryEloquent implements DiscountRepository

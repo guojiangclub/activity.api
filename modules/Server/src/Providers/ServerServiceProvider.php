@@ -1,10 +1,9 @@
 <?php
 
-namespace GuojiangClub\Activity\Server\Providers;
+namespace GuoJiangClub\Activity\Server\Providers;
 
-use GuojiangClub\Activity\Server\Http\Middleware\ActivityMiddleware;
+use GuoJiangClub\Activity\Server\Serializer\DataArraySerializer;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use ElementVip\Server\Serializer\DataArraySerializer;
 use Dingo\Api\Transformer\Adapter\Fractal;
 use League\Fractal\Manager;
 use Route;
@@ -20,7 +19,7 @@ class ServerServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'GuojiangClub\Activity\Server\Http\Controllers';
+    protected $namespace = 'GuoJiangClub\Activity\Server\Http\Controllers';
 
 	/**
 	 * 要注册的订阅者类。
@@ -28,7 +27,7 @@ class ServerServiceProvider extends ServiceProvider
 	 * @var array
 	 */
 	protected $subscribe = [
-		'GuojiangClub\Activity\Server\Listeners\ActivityPointEventListener',
+		'GuoJiangClub\Activity\Server\Listeners\ActivityPointEventListener',
 	];
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -50,12 +49,18 @@ class ServerServiceProvider extends ServiceProvider
 	    }
 
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'activity-server');
+
+        if ($this->app->runningInConsole()) {
+
+            $this->publishes([
+                __DIR__ . '/../config.php' => config_path('dmp-api.php'),
+            ]);
+        }
     }
 
     public function register()
     {
-        $this->app->register('ElementVip\Activity\Core\Providers\ActivityServiceProvider');
-//        $this->app[\Illuminate\Routing\Router::class]->middleware('activity', ActivityMiddleware::class);
+
     }
 
     public function map()

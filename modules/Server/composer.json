@@ -2,9 +2,8 @@
   "name": "guojiangClub/activity-server",
   "description": "guoajiangClub activity api server",
   "keywords": [
-    "ElementVip",
-    "api",
-    "server"
+    "guojiang.club",
+    "activity"
   ],
   "license": "MIT",
   "authors": [

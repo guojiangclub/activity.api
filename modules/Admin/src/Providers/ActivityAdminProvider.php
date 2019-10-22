@@ -1,8 +1,8 @@
 <?php
 
-namespace GuojiangClub\Activity\Admin\Providers;
+namespace GuoJiangClub\Activity\Admin\Providers;
 
-use GuojiangClub\Activity\Admin\ActivityAdmin;
+use GuoJiangClub\Activity\Admin\ActivityAdmin;
 use Illuminate\Support\ServiceProvider;
 use Route;
 
@@ -15,7 +15,7 @@ class ActivityAdminProvider extends ServiceProvider
 	 *
 	 * @var string
 	 */
-	protected $namespace = 'GuojiangClub\Activity\Admin\Http\Controllers';
+	protected $namespace = 'GuoJiangClub\Activity\Admin\Http\Controllers';
 
 	/**
 	 * Define your route model bindings, pattern filters, etc.
@@ -27,7 +27,8 @@ class ActivityAdminProvider extends ServiceProvider
 		$this->loadViewsFrom(__DIR__ . '/../../resources/views', 'activity');
 
 		$this->publishes([
-			__DIR__ . '/../../resources/assets' => public_path('assets/backend/activity'),
+            __DIR__ . '/../../resources/assets/libs' => public_path('assets/backend/libs'),
+			__DIR__ . '/../../resources/assets' => public_path('assets/backend/activity')
 		], 'backend-activity');
 
 		$this->registerMigrations();

@@ -1,8 +1,8 @@
 <?php
-namespace GuojiangClub\Activity\Core\Models\Discount;
+namespace GuoJiangClub\Activity\Core\Models\Discount;
 
 use Carbon\Carbon;
-use ElementVip\Component\Discount\Models\Discount as BaseDiscount;
+use iBrand\Component\Discount\Models\Discount as BaseDiscount;
 
 
 class Discount extends BaseDiscount

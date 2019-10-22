@@ -1,10 +1,10 @@
 <?php
 
-namespace GuojiangClub\Activity\Core\Schedule;
+namespace GuoJiangClub\Activity\Core\Schedule;
 
 use Carbon\Carbon;
-use GuojiangClub\Activity\Core\Models\Activity;
-use GuojiangClub\Activity\Core\Notifications\Remind;
+use GuoJiangClub\Activity\Core\Models\Activity;
+use GuoJiangClub\Activity\Core\Notifications\Remind;
 use ElementVip\Scheduling\Schedule\Scheduling;
 
 class RemindSchedule extends Scheduling

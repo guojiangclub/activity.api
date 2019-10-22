@@ -1,9 +1,9 @@
 <?php
 
-namespace GuojiangClub\Activity\Core\Notifications;
+namespace GuoJiangClub\Activity\Core\Notifications;
 
 use Carbon\Carbon;
-use GuojiangClub\Activity\Core\Notifications\Channels\Wx;
+use GuoJiangClub\Activity\Core\Notifications\Channels\Wx;
 use Illuminate\Bus\Queueable;
 
 class Remind extends Notification

@@ -1,6 +1,6 @@
 <?php
 
-namespace GuojiangClub\Activity\Server\Messages;
+namespace GuoJiangClub\Activity\Server\Messages;
 
 use Overtrue\EasySms\Message;
 use Overtrue\EasySms\Contracts\GatewayInterface;

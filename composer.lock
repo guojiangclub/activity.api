@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7869bcd4ed33e35fb73a4aec702290eb",
+    "content-hash": "241c9b63ee42edfc7983a4a25c5ffeec",
     "packages": [
         {
             "name": "anam/phantomjs-linux-x86-binary",
@@ -1916,6 +1916,68 @@
             "time": "2019-10-18T06:45:45+00:00"
         },
         {
+            "name": "ibrand/discount",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guojiangclub/discount.git",
+                "reference": "db6857c594ecfb54758ed3bb2b2a9bc44785afb9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guojiangclub/discount/zipball/db6857c594ecfb54758ed3bb2b2a9bc44785afb9",
+                "reference": "db6857c594ecfb54758ed3bb2b2a9bc44785afb9",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ibrand/laravel-cache": "~1.0.0",
+                "php": ">=7.0",
+                "prettus/l5-repository": "^2.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "~1.0",
+                "orchestra/database": "~3.5",
+                "orchestra/testbench": "~3.5",
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "iBrand\\Component\\Discount\\Providers\\DiscountServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "iBrand\\Component\\Discount\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "shjchen",
+                    "email": "ibrand.shjchen@foxmail.com"
+                }
+            ],
+            "description": "ibrand discount component",
+            "keywords": [
+                "component",
+                "discount",
+                "ibrand"
+            ],
+            "time": "2019-01-10T04:31:18+00:00"
+        },
+        {
             "name": "ibrand/laravel-active",
             "version": "v2.0",
             "source": {
@@ -1971,6 +2033,56 @@
                 "routing"
             ],
             "time": "2018-03-26T15:11:13+00:00"
+        },
+        {
+            "name": "ibrand/laravel-cache",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ibrandcc/laravel-cache.git",
+                "reference": "93d3f40b97d9b776d0af9997e51337db9d789e31"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ibrandcc/laravel-cache/zipball/93d3f40b97d9b776d0af9997e51337db9d789e31",
+                "reference": "93d3f40b97d9b776d0af9997e51337db9d789e31",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "iBrand\\Cache\\": "src/"
+                },
+                "files": [
+                    "src/helps.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "shjchen",
+                    "email": "zdbd@vip.qq.com"
+                }
+            ],
+            "description": "Packaging commonly used caching usage extend Laravel's cache",
+            "keywords": [
+                "cache",
+                "ibrand",
+                "laravel"
+            ],
+            "time": "2018-01-05T07:55:42+00:00"
         },
         {
             "name": "ibrand/laravel-miniprogram-poster",
@@ -2033,6 +2145,59 @@
                 "poster"
             ],
             "time": "2018-10-17T07:59:37+00:00"
+        },
+        {
+            "name": "ibrand/laravel-scheduling",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guojiangclub/laravel-scheduling.git",
+                "reference": "7ddf6f684cdbd3bfbcc4994467995103b6f6f1ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guojiangclub/laravel-scheduling/zipball/7ddf6f684cdbd3bfbcc4994467995103b6f6f1ae",
+                "reference": "7ddf6f684cdbd3bfbcc4994467995103b6f6f1ae",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "iBrand\\Scheduling\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "iBrand\\Scheduling\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "shjchen",
+                    "email": "ibrand.sjchen@foxmail.com"
+                }
+            ],
+            "description": "ibrand's laravel scheduling. Split scheduling to every package.",
+            "keywords": [
+                "ibrand",
+                "laravel scheduling"
+            ],
+            "time": "2018-01-17T14:07:17+00:00"
         },
         {
             "name": "ibrand/laravel-sms",
@@ -2214,6 +2379,68 @@
             "time": "2019-05-25T08:30:19+00:00"
         },
         {
+            "name": "ibrand/point",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guojiangclub/point.git",
+                "reference": "50df3e4f842fe0d073a564f4aa5a43e670f83138"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guojiangclub/point/zipball/50df3e4f842fe0d073a564f4aa5a43e670f83138",
+                "reference": "50df3e4f842fe0d073a564f4aa5a43e670f83138",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ibrand/laravel-scheduling": "~1.0",
+                "php": ">=7.0",
+                "prettus/l5-repository": "^2.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "~1.0",
+                "orchestra/database": "~3.5",
+                "orchestra/testbench": "~3.5",
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "iBrand\\Component\\Point\\PointServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "iBrand\\Component\\Point\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "shjchen",
+                    "email": "ibrand.shjchen@foxmail.com"
+                }
+            ],
+            "description": "iBrand Point component",
+            "keywords": [
+                "component",
+                "ibrand",
+                "point"
+            ],
+            "time": "2019-04-08T08:14:04+00:00"
+        },
+        {
             "name": "ibrand/setting",
             "version": "v1.2.2",
             "source": {
@@ -2275,6 +2502,66 @@
                 "setting"
             ],
             "time": "2019-01-03T11:04:09+00:00"
+        },
+        {
+            "name": "ibrand/user",
+            "version": "v1.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guojiangclub/user.git",
+                "reference": "5283a3d680c15e86eddf6b2777b149604a10ef1b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guojiangclub/user/zipball/5283a3d680c15e86eddf6b2777b149604a10ef1b",
+                "reference": "5283a3d680c15e86eddf6b2777b149604a10ef1b",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.0",
+                "prettus/l5-repository": "^2.1"
+            },
+            "require-dev": {
+                "orchestra/database": "~3.5",
+                "orchestra/testbench": "~3.5",
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "iBrand\\Component\\User\\UserServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "iBrand\\Component\\User\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "shjchen",
+                    "email": "ibrand.shjchen@foxmail.com"
+                }
+            ],
+            "description": "iBrand User component",
+            "keywords": [
+                "component",
+                "ibrand",
+                "user"
+            ],
+            "time": "2019-04-24T18:10:12+00:00"
         },
         {
             "name": "intervention/image",
@@ -8446,6 +8733,80 @@
                 "psr-7"
             ],
             "time": "2019-08-06T17:53:53+00:00"
+        },
+        {
+            "name": "zizaco/entrust",
+            "version": "5.2.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Zizaco/entrust.git",
+                "reference": "3623cc052937d9e62543402b50f24065720d44b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/3623cc052937d9e62543402b50f24065720d44b9",
+                "reference": "3623cc052937d9e62543402b50f24065720d44b9",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "illuminate/cache": "~5.0",
+                "illuminate/console": "~5.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "illuminate/database": "~5.0",
+                "mockery/mockery": "dev-master",
+                "phpunit/phpunit": "~4.1",
+                "sami/sami": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/commands"
+                ],
+                "psr-4": {
+                    "Zizaco\\Entrust\\": "src/Entrust/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Elkins",
+                    "homepage": "http://andrewelkins.com"
+                },
+                {
+                    "name": "Zizaco Zizuini",
+                    "email": "zizaco@gmail.com"
+                },
+                {
+                    "name": "Ben Batschelet",
+                    "homepage": "http://github.com/bbatsche"
+                },
+                {
+                    "name": "Michele Angioni",
+                    "email": "michele.angioni@gmail.com"
+                }
+            ],
+            "description": "This package provides a flexible way to add Role-based Permissions to Laravel",
+            "keywords": [
+                "acl",
+                "auth",
+                "illuminate",
+                "laravel",
+                "permission",
+                "roles"
+            ],
+            "time": "2016-12-29T06:25:06+00:00"
         }
     ],
     "packages-dev": [
@@ -10975,7 +11336,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "dingo/api": 15,
-        "ibrand/backend": 20
+        "ibrand/backend": 20,
+        "zizaco/entrust": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

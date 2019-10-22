@@ -1,9 +1,9 @@
 <?php
-namespace GuojiangClub\Activity\Core\Repository\Eloquent;
+namespace GuoJiangClub\Activity\Core\Repository\Eloquent;
 
 use Carbon\Carbon;
-use GuojiangClub\Activity\Core\Models\Discount\Coupon;
-use GuojiangClub\Activity\Core\Repository\CouponRepository;
+use GuoJiangClub\Activity\Core\Models\Discount\Coupon;
+use GuoJiangClub\Activity\Core\Repository\CouponRepository;
 use ElementVip\Component\Discount\Contracts\DiscountContract;
 use Prettus\Repository\Eloquent\BaseRepository;
 //use

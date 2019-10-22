@@ -1,6 +1,6 @@
 <?php
 
-namespace GuojiangClub\Activity\Core\Models;
+namespace GuoJiangClub\Activity\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

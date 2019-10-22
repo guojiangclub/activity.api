@@ -1,13 +1,13 @@
 <?php
 
-namespace GuojiangClub\Activity\Server\Http\Controllers;
+namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
-use ElementVip\Activity\Core\Models\Activity;
-use ElementVip\Activity\Core\Models\City;
-use ElementVip\Activity\Core\Models\Statement;
-use ElementVip\Activity\Core\Repository\ActivityRepository;
-use ElementVip\Activity\Core\Repository\MemberRepository;
-use ElementVip\Activity\Core\Repository\PaymentRepository;
+use GuoJiangClub\Activity\Core\Models\Activity;
+use GuoJiangClub\Activity\Core\Models\City;
+use GuoJiangClub\Activity\Core\Models\Statement;
+use GuoJiangClub\Activity\Core\Repository\ActivityRepository;
+use GuoJiangClub\Activity\Core\Repository\MemberRepository;
+use GuoJiangClub\Activity\Core\Repository\PaymentRepository;
 use iBrand\Component\Vip\Repositories\VipMemberRepository;
 use ElementVip\Component\User\Models\Role;
 use iBrand\Miniprogram\Poster\MiniProgramShareImg;

@@ -1,6 +1,6 @@
 <?php
 
-namespace GuojiangClub\Activity\Core\Notifications\Channels;
+namespace GuoJiangClub\Activity\Core\Notifications\Channels;
 
 use ElementVip\Wechat\Server\Wx\AccessToken;
 use Illuminate\Notifications\Notification;

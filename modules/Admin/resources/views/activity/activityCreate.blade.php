@@ -28,14 +28,12 @@
                         @include("activity::public.activity.activitySite")
                         @include("activity::public.activity.activityMember")
                         @include("activity::public.activity.activityContent")
-                        @include("activity::public.activity.activityGoods")
                         @include("activity::public.activity.activityPayment")
                         @include("activity::public.activity.activityRefund")
                         @include("activity::public.activity.activityFinishTime")
                         @include("activity::public.activity.activityForm")
                         @include("activity::public.activity.activityStatement")
                         @include("activity::public.activity.activityPoint")
-                        {{--@include("activity::public.activity.activityMemberRequiredInfo")--}}
                         @include("activity::public.activity.activityCoach")
                         @include("activity::public.activity.activitySubmit")
                         {!! Form::close() !!}
@@ -54,7 +52,7 @@
 {!! Html::script('assets/backend/activity/js/common.js') !!}
 {!! Html::script('assets/backend/activity/js/jquery-ui-1.10.4.min.js') !!}
 <script charset="utf-8" src="//map.qq.com/api/js?v=2.exp&key={{ env('QQ_MAP_KEY') }}"></script>
-{{--@include('vendor.ueditor.assets')--}}
+
 @include('UEditor::head')
 {!! Html::script('assets/backend/libs/jquery.form.min.js') !!}
 {!! Html::script('assets/backend/libs/webuploader-0.1.5/webuploader.js') !!}
@@ -66,4 +64,3 @@
 @include("activity::public.script")
 @include("activity::public.js.createAndEditActivity")
 @include("activity::public.js.getPoint")
-@include("activity::public.js.activityGoodsJs")

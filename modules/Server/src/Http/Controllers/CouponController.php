@@ -1,12 +1,12 @@
 <?php
 
-namespace GuojiangClub\Activity\Server\Http\Controllers;
+namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
 use Carbon\Carbon;
-use ElementVip\Activity\Core\Models\Discount\Coupon;
-use ElementVip\Activity\Core\Repository\CouponRepository;
-use ElementVip\Activity\Core\Repository\DiscountRepository;
-use GuojiangClub\Activity\Server\Transformers\CouponTransformer;
+use GuoJiangClub\Activity\Core\Models\Discount\Coupon;
+use GuoJiangClub\Activity\Core\Repository\CouponRepository;
+use GuoJiangClub\Activity\Core\Repository\DiscountRepository;
+use GuoJiangClub\Activity\Server\Transformers\CouponTransformer;
 use ElementVip\Component\User\Models\User;
 use ElementVip\Component\User\Models\UserBind;
 use Illuminate\Http\Request;

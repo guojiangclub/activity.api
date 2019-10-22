@@ -1,6 +1,6 @@
 <?php
 
-namespace GuojiangClub\Activity\Core\Models;
+namespace GuoJiangClub\Activity\Core\Models;
 
 use Carbon\Carbon;
 use ElementVip\Component\Discount\Contracts\DiscountSubjectContract;

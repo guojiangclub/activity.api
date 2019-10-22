@@ -1,6 +1,6 @@
 <?php
 
-namespace GuojiangClub\Activity\Core\Models;
+namespace GuoJiangClub\Activity\Core\Models;
 
 use ElementVip\Backend\Models\Admin;
 use ElementVip\Component\User\Models\User;

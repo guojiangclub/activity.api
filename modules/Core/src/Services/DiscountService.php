@@ -1,9 +1,9 @@
 <?php
 
-namespace GuojiangClub\Activity\Core\Services;
+namespace GuoJiangClub\Activity\Core\Services;
 
-use GuojiangClub\Activity\Core\Repository\CouponRepository;
-use GuojiangClub\Activity\Core\Repository\DiscountRepository;
+use GuoJiangClub\Activity\Core\Repository\CouponRepository;
+use GuoJiangClub\Activity\Core\Repository\DiscountRepository;
 use ElementVip\Component\Discount\Applicators\DiscountApplicator;
 use ElementVip\Component\Discount\Checkers\CouponEligibilityChecker;
 use ElementVip\Component\Discount\Checkers\DatesEligibilityChecker;

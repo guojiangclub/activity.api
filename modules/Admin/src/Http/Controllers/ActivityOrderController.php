@@ -1,23 +1,23 @@
 <?php
 
-namespace GuojiangClub\Activity\Admin\Http\Controllers;
+namespace GuoJiangClub\Activity\Admin\Http\Controllers;
 
 use Carbon\Carbon;
-use GuojiangClub\Activity\Admin\Models\Activity;
-use GuojiangClub\Activity\Admin\Models\DiscountCoupon;
-use ElementVip\Activity\Core\Models\Answer;
-use ElementVip\Activity\Core\Models\Member;
-use ElementVip\Activity\Core\Models\Payment;
-use ElementVip\Activity\Core\Notifications\Join;
-use ElementVip\Activity\Server\Services\ActivityService;
-use ElementVip\Backend\Http\Controllers\Controller;
+use GuoJiangClub\Activity\Admin\Models\Activity;
+use GuoJiangClub\Activity\Admin\Models\DiscountCoupon;
+use GuoJiangClub\Activity\Core\Models\Answer;
+use GuoJiangClub\Activity\Core\Models\Member;
+use GuoJiangClub\Activity\Core\Models\Payment;
+use GuoJiangClub\Activity\Core\Notifications\Join;
+use GuoJiangClub\Activity\Server\Services\ActivityService;
+use iBrand\Backend\Http\Controllers\Controller;
 use ElementVip\Component\User\Models\User;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use Excel;
-use ElementVip\Activity\Core\Notifications\Signed;
-use ElementVip\Activity\Core\Repository\DiscountRepository;
-use ElementVip\Activity\Core\Repository\CouponRepository;
+use GuoJiangClub\Activity\Core\Notifications\Signed;
+use GuoJiangClub\Activity\Core\Repository\DiscountRepository;
+use GuoJiangClub\Activity\Core\Repository\CouponRepository;
 use DB;
 use Illuminate\Http\Request;
 use Response;

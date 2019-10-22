@@ -1,15 +1,15 @@
 <?php
 
-namespace GuojiangClub\Activity\Admin\Http\Controllers;
+namespace GuoJiangClub\Activity\Admin\Http\Controllers;
 
-use GuojiangClub\Activity\Admin\Models\Activity;
-use ElementVip\Activity\Core\Models\ActivityCategory;
-use ElementVip\Backend\Http\Controllers\Controller;
+use GuoJiangClub\Activity\Admin\Models\Activity;
+use GuoJiangClub\Activity\Core\Models\ActivityCategory;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Controllers\ModelForm;
+use iBrand\Backend\Http\Controllers\Controller;
 
 class ActivityCategoryController extends Controller
 {

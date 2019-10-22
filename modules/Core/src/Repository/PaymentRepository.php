@@ -1,9 +1,9 @@
 <?php
 
-namespace GuojiangClub\Activity\Core\Repository;
+namespace GuoJiangClub\Activity\Core\Repository;
 
 use Prettus\Repository\Eloquent\BaseRepository;
-use GuojiangClub\Activity\Core\Models\Payment;
+use GuoJiangClub\Activity\Core\Models\Payment;
 
 class PaymentRepository extends BaseRepository
 {

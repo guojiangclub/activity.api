@@ -1,10 +1,10 @@
 <?php
 
-namespace GuojiangClub\Activity\Core\Schedule;
+namespace GuoJiangClub\Activity\Core\Schedule;
 
 use Carbon\Carbon;
-use GuojiangClub\Activity\Core\Models\Activity;
-use GuojiangClub\Activity\Core\Notifications\Late;
+use GuoJiangClub\Activity\Core\Models\Activity;
+use GuoJiangClub\Activity\Core\Notifications\Late;
 use ElementVip\Scheduling\Schedule\Scheduling;
 
 class LateSchedule extends Scheduling

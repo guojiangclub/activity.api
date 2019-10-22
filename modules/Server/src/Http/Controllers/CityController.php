@@ -1,9 +1,9 @@
 <?php
 
-namespace GuojiangClub\Activity\Server\Http\Controllers;
+namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
-use ElementVip\Activity\Core\Models\City;
-use GuojiangClub\Activity\Server\Transformers\CityTransformer;
+use GuoJiangClub\Activity\Core\Models\City;
+use GuoJiangClub\Activity\Server\Transformers\CityTransformer;
 
 class CityController extends Controller
 {

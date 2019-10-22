@@ -1,11 +1,11 @@
 <?php
-namespace GuojiangClub\Activity\Core\Console;
+namespace GuoJiangClub\Activity\Core\Console;
 
-use GuojiangClub\Activity\Core\Models\Activity;
-use GuojiangClub\Activity\Core\Models\Category;
-use GuojiangClub\Activity\Core\Models\City;
-use GuojiangClub\Activity\Core\Models\Img;
-use GuojiangClub\Activity\Core\Models\Payment;
+use GuoJiangClub\Activity\Core\Models\Activity;
+use GuoJiangClub\Activity\Core\Models\Category;
+use GuoJiangClub\Activity\Core\Models\City;
+use GuoJiangClub\Activity\Core\Models\Img;
+use GuoJiangClub\Activity\Core\Models\Payment;
 use Illuminate\Console\Command;
 
 class ActivityCommand extends Command

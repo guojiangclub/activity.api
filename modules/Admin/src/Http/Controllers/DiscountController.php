@@ -6,15 +6,15 @@
  * Time: 14:33
  */
 
-namespace GuojiangClub\Activity\Admin\Http\Controllers;
+namespace GuoJiangClub\Activity\Admin\Http\Controllers;
 
 use Carbon\Carbon;
-use GuojiangClub\Activity\Admin\Models\Discount;
-use GuojiangClub\Activity\Admin\Models\Activity;
-use GuojiangClub\Activity\Admin\Models\DiscountAction;
-use GuojiangClub\Activity\Admin\Models\DiscountCoupon;
-use GuojiangClub\Activity\Admin\Models\DiscountRule;
-use ElementVip\Backend\Http\Controllers\Controller;
+use GuoJiangClub\Activity\Admin\Models\Discount;
+use GuoJiangClub\Activity\Admin\Models\Activity;
+use GuoJiangClub\Activity\Admin\Models\DiscountAction;
+use GuoJiangClub\Activity\Admin\Models\DiscountCoupon;
+use GuoJiangClub\Activity\Admin\Models\DiscountRule;
+use iBrand\Backend\Http\Controllers\Controller;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use Illuminate\Http\Request;

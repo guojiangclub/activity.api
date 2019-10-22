@@ -1,31 +1,24 @@
 <?php
 
-namespace GuojiangClub\Activity\Core\Providers;
+namespace GuoJiangClub\Activity\Core\Providers;
 
-use GuojiangClub\Activity\Core\Console\ActivityCityCommand;
-use GuojiangClub\Activity\Core\Console\ActivityCommand;
-use GuojiangClub\Activity\Core\Discount\Actions\ActivityAction;
-use GuojiangClub\Activity\Core\Discount\Checkers\ContainsActivityRuleChecker;
+use GuoJiangClub\Activity\Core\Console\ActivityCityCommand;
+use GuoJiangClub\Activity\Core\Console\ActivityCommand;
+use GuoJiangClub\Activity\Core\Discount\Actions\ActivityAction;
+use GuoJiangClub\Activity\Core\Discount\Checkers\ContainsActivityRuleChecker;
 
-use GuojiangClub\Activity\Core\Models\Activity;
-use GuojiangClub\Activity\Core\Repository\CouponRepository;
-use GuojiangClub\Activity\Core\Repository\DiscountRepository;
-use GuojiangClub\Activity\Core\Repository\Eloquent\CouponRepositoryEloquent;
-use GuojiangClub\Activity\Core\Repository\Eloquent\DiscountRepositoryEloquent;
-use GuojiangClub\Activity\Core\Schedule\LateSchedule;
-use GuojiangClub\Activity\Core\Schedule\OmsSchedule;
-use GuojiangClub\Activity\Core\Schedule\RemindSchedule;
-use GuojiangClub\Activity\Server\Transformers\FavoriteTransformer;
+use GuoJiangClub\Activity\Core\Models\Activity;
+use GuoJiangClub\Activity\Core\Repository\CouponRepository;
+use GuoJiangClub\Activity\Core\Repository\DiscountRepository;
+use GuoJiangClub\Activity\Core\Repository\Eloquent\CouponRepositoryEloquent;
+use GuoJiangClub\Activity\Core\Repository\Eloquent\DiscountRepositoryEloquent;
+use GuoJiangClub\Activity\Server\Transformers\FavoriteTransformer;
 use Event;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 
 class ActivityServiceProvider extends ServiceProvider
 {
-
-    protected $subscribe = [
-        'GuojiangClub\Activity\Core\Listeners\ActivityEventListener',
-    ];
 
     public function boot()
     {
@@ -40,9 +33,13 @@ class ActivityServiceProvider extends ServiceProvider
             __DIR__ . '/../../factories/ActivityFactory.php' => database_path('factories/ActivityFactory.php')
         ], 'ActivityFactory');
 
-        foreach ($this->subscribe as $subscriber) {
-            Event::subscribe($subscriber);
+        if (!class_exists('EntrustSetupTables')) {
+            $timestamp = date('Y_m_d_His', time()+100);
+            $this->publishes([
+                __DIR__.'/../../migrations/entrust_setup_tables.php.stub' => database_path()."/migrations/{$timestamp}_entrust_setup_tables.php",
+            ], 'migrations');
         }
+
     }
 
     protected function registerMigrations()
@@ -52,12 +49,6 @@ class ActivityServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->app->make('ElementVip\ScheduleList')->add(LateSchedule::class);
-        //取消这种定时执行方式
-        $this->app->make('ElementVip\ScheduleList')->add(RemindSchedule::class);
-
-        //$this->app->make('ElementVip\ScheduleList')->add(OmsSchedule::class);
-
         $this->app->bind(
             ActivityAction::class,
             ActivityAction::class
@@ -73,7 +64,6 @@ class ActivityServiceProvider extends ServiceProvider
         $this->app->alias(ContainsActivityRuleChecker::class, ContainsActivityRuleChecker::TYPE);
 
         $this->app->bind(DiscountRepository::class, DiscountRepositoryEloquent::class);
-        /*$this->app->bind(CouponRepository::class, CouponRepositoryEloquent::class);*/
 
         $this->app->singleton(CouponRepository::class , CouponRepositoryEloquent::class);
 

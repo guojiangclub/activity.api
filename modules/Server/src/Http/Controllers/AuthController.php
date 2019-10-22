@@ -6,7 +6,7 @@
  * Time: 12:10
  */
 
-namespace GuojiangClub\Activity\Server\Http\Controllers;
+namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
 use ElementVip\Component\User\Models\UserBind;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace GuojiangClub\Activity\Server\Http\Controllers;
+namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
 use Dingo\Api\Http\Response;
 use Dingo\Api\Routing\Helpers;

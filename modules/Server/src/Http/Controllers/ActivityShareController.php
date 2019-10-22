@@ -1,8 +1,8 @@
 <?php
 
-namespace GuojiangClub\Activity\Server\Http\Controllers;
+namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
-use ElementVip\Activity\Core\Models\Activity;
+use GuoJiangClub\Activity\Core\Models\Activity;
 use iBrand\Miniprogram\Poster\MiniProgramShareImg;
 use Illuminate\Http\Request;
 use Validator;

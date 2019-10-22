@@ -1,20 +1,20 @@
 <?php
 
-namespace GuojiangClub\Activity\Server\Http\Controllers;
+namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
 use Carbon\Carbon;
-use ElementVip\Activity\Core\Models\Activity;
-use ElementVip\Activity\Core\Models\Discount\Coupon;
-use ElementVip\Activity\Core\Models\Like;
-use ElementVip\Activity\Core\Models\Member;
-use ElementVip\Activity\Core\Models\Payment;
-use ElementVip\Activity\Core\Notifications\Signed;
-use ElementVip\Activity\Core\Repository\ActivityRepository;
-use ElementVip\Activity\Core\Repository\CouponRepository;
-use ElementVip\Activity\Core\Repository\DiscountRepository;
-use ElementVip\Activity\Core\Repository\MemberRepository;
-use GuojiangClub\Activity\Server\Services\ActivityService;
-use GuojiangClub\Activity\Server\Transformers\ActivityTransformer;
+use GuoJiangClub\Activity\Core\Models\Activity;
+use GuoJiangClub\Activity\Core\Models\Discount\Coupon;
+use GuoJiangClub\Activity\Core\Models\Like;
+use GuoJiangClub\Activity\Core\Models\Member;
+use GuoJiangClub\Activity\Core\Models\Payment;
+use GuoJiangClub\Activity\Core\Notifications\Signed;
+use GuoJiangClub\Activity\Core\Repository\ActivityRepository;
+use GuoJiangClub\Activity\Core\Repository\CouponRepository;
+use GuoJiangClub\Activity\Core\Repository\DiscountRepository;
+use GuoJiangClub\Activity\Core\Repository\MemberRepository;
+use GuoJiangClub\Activity\Server\Services\ActivityService;
+use GuoJiangClub\Activity\Server\Transformers\ActivityTransformer;
 use ElementVip\Component\Point\Repository\PointRepository;
 use ElementVip\Component\User\Models\User;
 use ElementVip\Notifications\PointRecord;

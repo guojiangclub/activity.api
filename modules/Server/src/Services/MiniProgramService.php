@@ -1,6 +1,6 @@
 <?php
 
-namespace GuojiangClub\Activity\Server\Services;
+namespace GuoJiangClub\Activity\Server\Services;
 
 use Storage;
 

@@ -2,9 +2,8 @@
   "name": "guojiangClub/activity-backend",
   "description": "guojiangClub activity api admin",
   "keywords": [
-    "ElementVip",
-    "api",
-    "server"
+    "guojiang.club",
+    "activity"
   ],
   "license": "MIT",
   "authors": [

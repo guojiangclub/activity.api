@@ -1,10 +1,10 @@
 <?php
-namespace GuojiangClub\Activity\Core\Discount\Checkers;
+namespace GuoJiangClub\Activity\Core\Discount\Checkers;
 
-use ElementVip\Component\Discount\Contracts\DiscountContract;
-use ElementVip\Component\Discount\Contracts\DiscountSubjectContract;
-use ElementVip\Component\Discount\Contracts\RuleCheckerContract;
-use ElementVip\Component\Discount\Contracts\DiscountItemContract;
+use iBrand\Component\Discount\Contracts\DiscountContract;
+use iBrand\Component\Discount\Contracts\DiscountSubjectContract;
+use iBrand\Component\Discount\Contracts\RuleCheckerContract;
+use iBrand\Component\Discount\Contracts\DiscountItemContract;
 
 class ContainsActivityRuleChecker implements RuleCheckerContract
 {

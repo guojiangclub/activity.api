@@ -1,10 +1,10 @@
 <?php
 
-namespace GuojiangClub\Activity\Admin;
+namespace GuoJiangClub\Activity\Admin;
 
 use Encore\Admin\Admin;
 use Encore\Admin\Extension;
-use GuojiangClub\Activity\Admin\Seeds\ActivityAdminSeeder;
+use GuoJiangClub\Activity\Admin\Seeds\ActivityAdminSeeder;
 use Illuminate\Support\Facades\Artisan;
 
 class ActivityAdmin extends Extension

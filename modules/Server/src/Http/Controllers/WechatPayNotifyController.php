@@ -1,7 +1,7 @@
 <?php
 
 
-namespace GuojiangClub\Activity\Server\Http\Controllers;
+namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
 use EasyWeChat;
 use ElementVip\Component\Payment\Services\ActivityPaymentService;

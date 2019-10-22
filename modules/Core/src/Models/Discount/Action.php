@@ -1,8 +1,8 @@
 <?php
-namespace GuojiangClub\Activity\Core\Models\Discount;
+namespace GuoJiangClub\Activity\Core\Models\Discount;
 
 use Illuminate\Database\Eloquent\Model;
-use ElementVip\Component\Discount\Models\Action as BaseAction;
+use iBrand\Component\Discount\Models\Action as BaseAction;
 
 class Action extends BaseAction
 {

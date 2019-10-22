@@ -1,9 +1,9 @@
 <?php
 
-namespace GuojiangClub\Activity\Core\Repository;
+namespace GuoJiangClub\Activity\Core\Repository;
 
 use Prettus\Repository\Eloquent\BaseRepository;
-use GuojiangClub\Activity\Core\Models\Refund;
+use GuoJiangClub\Activity\Core\Models\Refund;
 
 class ActivityRefundRepository extends BaseRepository
 {

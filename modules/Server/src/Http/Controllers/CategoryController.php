@@ -1,8 +1,8 @@
 <?php
 
-namespace GuojiangClub\Activity\Server\Http\Controllers;
+namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
-use ElementVip\Activity\Core\Models\ActivityCategory;
+use GuoJiangClub\Activity\Core\Models\ActivityCategory;
 
 class CategoryController extends Controller
 {

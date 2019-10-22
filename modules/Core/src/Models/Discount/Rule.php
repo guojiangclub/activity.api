@@ -1,8 +1,8 @@
 <?php
-namespace GuojiangClub\Activity\Core\Models\Discount;
+namespace GuoJiangClub\Activity\Core\Models\Discount;
 
 use Illuminate\Database\Eloquent\Model;
-use ElementVip\Component\Discount\Models\Rule as BaseRule;
+use iBrand\Component\Discount\Models\Rule as BaseRule;
 
 class Rule extends BaseRule
 {

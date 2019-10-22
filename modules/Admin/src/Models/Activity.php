@@ -6,10 +6,10 @@
  * Time: 20:20
  */
 
-namespace GuojiangClub\Activity\Admin\Models;
+namespace GuoJiangClub\Activity\Admin\Models;
 
 
-class Activity extends \ElementVip\Activity\Core\Models\Activity
+class Activity extends \GuoJiangClub\Activity\Core\Models\Activity
 {
     protected $appends = ['type_text'];
 

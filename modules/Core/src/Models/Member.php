@@ -1,6 +1,6 @@
 <?php
 
-namespace GuojiangClub\Activity\Core\Models;
+namespace GuoJiangClub\Activity\Core\Models;
 
 use ElementVip\Component\Discount\Contracts\DiscountSubjectContract;
 use ElementVip\Component\Order\Models\Order;

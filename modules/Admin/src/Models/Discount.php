@@ -6,11 +6,11 @@
  * Date: 2017/2/22
  * Time: 15:08
  */
-namespace GuojiangClub\Activity\Admin\Models;
+namespace GuoJiangClub\Activity\Admin\Models;
 
 use Carbon\Carbon;
 
-class Discount extends \ElementVip\Activity\Core\Models\Discount\Discount
+class Discount extends \GuoJiangClub\Activity\Core\Models\Discount\Discount
 {
 
 	public function rules()

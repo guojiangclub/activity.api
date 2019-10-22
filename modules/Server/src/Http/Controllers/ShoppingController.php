@@ -7,22 +7,22 @@
  * Time: 15:19
  */
 
-namespace GuojiangClub\Activity\Server\Http\Controllers;
+namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
 use Carbon\Carbon;
-use ElementVip\Activity\Core\Models\Activity;
-use ElementVip\Activity\Core\Models\ActivityOrders;
-use ElementVip\Activity\Core\Models\ActivityRefundLog;
-use ElementVip\Activity\Core\Models\Discount\Coupon;
-use ElementVip\Activity\Core\Models\Member;
-use ElementVip\Activity\Core\Models\Payment;
-use ElementVip\Activity\Core\Models\Answer;
-use ElementVip\Activity\Core\Notifications\Join;
-use ElementVip\Activity\Core\Repository\ActivityRepository;
-use ElementVip\Activity\Core\Repository\MemberRepository;
-use ElementVip\Activity\Core\Repository\PaymentRepository;
-use ElementVip\Activity\Core\Services\DiscountService;
-use GuojiangClub\Activity\Server\Services\ActivityService;
+use GuoJiangClub\Activity\Core\Models\Activity;
+use GuoJiangClub\Activity\Core\Models\ActivityOrders;
+use GuoJiangClub\Activity\Core\Models\ActivityRefundLog;
+use GuoJiangClub\Activity\Core\Models\Discount\Coupon;
+use GuoJiangClub\Activity\Core\Models\Member;
+use GuoJiangClub\Activity\Core\Models\Payment;
+use GuoJiangClub\Activity\Core\Models\Answer;
+use GuoJiangClub\Activity\Core\Notifications\Join;
+use GuoJiangClub\Activity\Core\Repository\ActivityRepository;
+use GuoJiangClub\Activity\Core\Repository\MemberRepository;
+use GuoJiangClub\Activity\Core\Repository\PaymentRepository;
+use GuoJiangClub\Activity\Core\Services\DiscountService;
+use GuoJiangClub\Activity\Server\Services\ActivityService;
 use ElementVip\Component\Address\Models\Address;
 use ElementVip\Component\Discount\Applicators\DiscountApplicator;
 use ElementVip\Component\Order\Models\Order;
@@ -30,7 +30,7 @@ use ElementVip\Component\Order\Models\OrderItem;
 use ElementVip\Component\Order\Processor\OrderProcessor;
 use ElementVip\Component\Order\Repositories\OrderRepository;
 use ElementVip\Component\Point\Repository\PointRepository;
-use ElementVip\Activity\Core\Models\Refund;
+use GuoJiangClub\Activity\Core\Models\Refund;
 use ElementVip\Component\Product\Models\Goods;
 use Illuminate\Events\Dispatcher;
 use ElementVip\Notifications\PointRecord;

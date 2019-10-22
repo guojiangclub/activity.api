@@ -1,7 +1,7 @@
 <?php
-namespace GuojiangClub\Activity\Core\Console;
+namespace GuoJiangClub\Activity\Core\Console;
 
-use GuojiangClub\Activity\Core\Models\City;
+use GuoJiangClub\Activity\Core\Models\City;
 use Illuminate\Console\Command;
 
 class ActivityCityCommand extends Command

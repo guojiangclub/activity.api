@@ -1,6 +1,6 @@
 <?php
 
-namespace GuojiangClub\Activity\Admin\Http\Controllers;
+namespace GuoJiangClub\Activity\Admin\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Encore\Admin\Facades\Admin;

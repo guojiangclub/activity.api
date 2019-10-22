@@ -59,7 +59,7 @@
 
                         @foreach ($refunds as $item)
                             <tr>
-                {{! $activity = \ElementVip\Activity\Core\Models\Activity::where('id',$item->order->activity_id)->first() }}
+                {{! $activity = \GuojiangClub\Activity\Core\Models\Activity::where('id',$item->order->activity_id)->first() }}
                                 <td>{{$activity->title}}</td>
                                 <td>{{$item->order->activity_id}}</td>
                                 <td>{{$item->refund_no}}</td>

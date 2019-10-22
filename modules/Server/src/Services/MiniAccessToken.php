@@ -1,6 +1,6 @@
 <?php
 
-namespace GuojiangClub\Activity\Server\Services;
+namespace GuoJiangClub\Activity\Server\Services;
 
 use ElementVip\Wechat\Server\Overtrue\AccessToken as CoreAccessToken;
 

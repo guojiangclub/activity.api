@@ -1,4 +1,5 @@
 <?php
+$router->post('upload/image', 'ImageController@postUpload')->name('upload.image');
 
 $router->get("/", "ActivityController@index")->name('activity.admin.index');
 $router->get("/activity-list", "ActivityController@index")->name('activity.admin.index');
@@ -64,9 +65,3 @@ $router->get('/refund', 'ActivityRefundController@index')->name('admin.activity.
 $router->get('/refund/show/{id}', 'ActivityRefundController@show')->name('admin.activity.refund.show');
 $router->post('/refund/store/', 'ActivityRefundController@store')->name('admin.activity.refund.store');
 $router->get('/refund/export', 'ActivityRefundController@export')->name('admin.activity.refund.export');
-
-//活动商品
-$router->get('getSpu', 'ActivityGoodsController@getSpu')->name('admin.activity.getSpu');
-$router->post('getSpuData', 'ActivityGoodsController@getSpuData')->name('admin.activity.getSpuData');
-$router->get('getSelectGoods', 'ActivityGoodsController@getSelectGoods')->name('admin.activity.getSelectGoods');
-

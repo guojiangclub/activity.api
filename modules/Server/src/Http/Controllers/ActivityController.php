@@ -1,21 +1,21 @@
 <?php
 
-namespace GuojiangClub\Activity\Server\Http\Controllers;
+namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
-use ElementVip\Activity\Core\Models\Activity;
-use ElementVip\Activity\Core\Models\ActivityOrders;
-use ElementVip\Activity\Core\Models\City;
-use ElementVip\Activity\Core\Models\Like;
-use ElementVip\Activity\Core\Models\Member;
-use ElementVip\Activity\Core\Repository\ActivityRepository;
-use GuojiangClub\Activity\Server\Services\ActivityService;
-use GuojiangClub\Activity\Server\Transformers\ActivityTransformer;
+use GuoJiangClub\Activity\Core\Models\Activity;
+use GuoJiangClub\Activity\Core\Models\ActivityOrders;
+use GuoJiangClub\Activity\Core\Models\City;
+use GuoJiangClub\Activity\Core\Models\Like;
+use GuoJiangClub\Activity\Core\Models\Member;
+use GuoJiangClub\Activity\Core\Repository\ActivityRepository;
+use GuoJiangClub\Activity\Server\Services\ActivityService;
+use GuoJiangClub\Activity\Server\Transformers\ActivityTransformer;
 use ElementVip\Component\Order\Models\Order;
 use ElementVip\Component\Point\Repository\PointRepository;
-use ElementVip\Activity\Core\Repository\MemberRepository;
-use ElementVip\Activity\Core\Repository\PaymentRepository;
+use GuoJiangClub\Activity\Core\Repository\MemberRepository;
+use GuoJiangClub\Activity\Core\Repository\PaymentRepository;
 use ElementVip\Component\Point\Model\Point;
-use GuojiangClub\Activity\Server\Services\MiniProgramService;
+use GuoJiangClub\Activity\Server\Services\MiniProgramService;
 use Storage;
 
 class ActivityController extends Controller

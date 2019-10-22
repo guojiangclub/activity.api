@@ -1,8 +1,8 @@
 <?php
 
-namespace GuojiangClub\Activity\Core\Repository;
+namespace GuoJiangClub\Activity\Core\Repository;
 
-use GuojiangClub\Activity\Core\Models\Activity;
+use GuoJiangClub\Activity\Core\Models\Activity;
 use Prettus\Repository\Eloquent\BaseRepository;
 
 class ActivityRepository extends BaseRepository

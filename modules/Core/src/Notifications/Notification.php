@@ -1,6 +1,6 @@
 <?php
 
-namespace GuojiangClub\Activity\Core\Notifications;
+namespace GuoJiangClub\Activity\Core\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification as NotificationExtend;

@@ -1,5 +1,5 @@
 <?php
-namespace GuojiangClub\Activity\Core\Repository;
+namespace GuoJiangClub\Activity\Core\Repository;
 
 use ElementVip\Component\Discount\Contracts\DiscountContract;
 use Prettus\Repository\Contracts\RepositoryInterface;

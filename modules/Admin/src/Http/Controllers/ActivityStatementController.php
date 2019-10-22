@@ -1,9 +1,9 @@
 <?php
 
-namespace GuojiangClub\Activity\Admin\Http\Controllers;
+namespace GuoJiangClub\Activity\Admin\Http\Controllers;
 
-use ElementVip\Activity\Core\Models\Statement;
-use ElementVip\Backend\Http\Controllers\Controller;
+use GuoJiangClub\Activity\Core\Models\Statement;
+use iBrand\Backend\Http\Controllers\Controller;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use Illuminate\Http\Request;

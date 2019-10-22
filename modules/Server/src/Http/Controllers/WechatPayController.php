@@ -6,15 +6,15 @@
  * Time: 17:38
  */
 
-namespace GuojiangClub\Activity\Server\Http\Controllers;
+namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
 
-use ElementVip\Activity\Core\Models\Member;
+use GuoJiangClub\Activity\Core\Models\Member;
 use Validator;
 use ElementVip\Component\Payment\Contracts\PaymentChargeContract;
 use ElementVip\Component\Point\Repository\PointRepository;
-use ElementVip\Activity\Core\Repository\MemberRepository;
-use ElementVip\Activity\Core\Repository\ActivityRepository;
+use GuoJiangClub\Activity\Core\Repository\MemberRepository;
+use GuoJiangClub\Activity\Core\Repository\ActivityRepository;
 use ElementVip\Component\Payment\Services\ActivityPaymentService;
 use Illuminate\Events\Dispatcher;
 use EasyWeChat;

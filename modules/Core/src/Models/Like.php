@@ -1,6 +1,6 @@
 <?php
 
-namespace GuojiangClub\Activity\Core\Models;
+namespace GuoJiangClub\Activity\Core\Models;
 
 use ElementVip\Component\Favorite\Models\Favorite;
 use ElementVip\Component\User\Models\User;

@@ -1,11 +1,11 @@
 <?php
-namespace GuojiangClub\Activity\Server\Services;
+namespace GuoJiangClub\Activity\Server\Services;
 
 use Carbon\Carbon;
 use DNS2D;
-use ElementVip\Activity\Core\Models\ActivityGoods;
-use ElementVip\Activity\Core\Models\Answer;
-use ElementVip\Activity\Core\Models\Like;
+use GuoJiangClub\Activity\Core\Models\ActivityGoods;
+use GuoJiangClub\Activity\Core\Models\Answer;
+use GuoJiangClub\Activity\Core\Models\Like;
 use ElementVip\Component\Product\Models\Goods;
 use ElementVip\Component\Product\Models\Specification;
 use iBrand\Shoppingcart\Item;

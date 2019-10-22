@@ -177,6 +177,32 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Laravel\Passport\PassportServiceProvider::class,
+        Zizaco\Entrust\EntrustServiceProvider::class,
+        Dingo\Api\Provider\LaravelServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+        Milon\Barcode\BarcodeServiceProvider::class,
+        Lavary\Menu\ServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        HieuLe\Active\ActiveServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+        Overtrue\LaravelUploader\UploadServiceProvider::class,
+        MarkTopper\DoctrineDBALTimestampType\Laravel5ServiceProvider::class,
+        Milon\Barcode\BarcodeServiceProvider::class,
+        Jenssegers\Agent\AgentServiceProvider::class,
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        Anam\PhantomMagick\ConverterServiceProvider::class,
+
+
+        iBrand\Common\CommonServiceProvider::class,
+        iBrand\UEditor\UEditorServiceProvider::class,
+        GuoJiangClub\Activity\Core\Providers\ActivityServiceProvider::class,
+        GuoJiangClub\Activity\Server\Providers\ServerServiceProvider::class,
+        GuoJiangClub\Activity\Admin\Providers\ActivityAdminProvider::class
+
     ],
 
     /*
@@ -232,7 +258,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Active' => HieuLe\Active\Facades\Active::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        'API' => Dingo\Api\Facade\API::class
+        'API' => Dingo\Api\Facade\API::class,
+        'Entrust' => Zizaco\Entrust\EntrustFacade::class,
     ],
 
 ];

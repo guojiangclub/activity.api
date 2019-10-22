@@ -6,17 +6,17 @@
  * Time: 18:41
  */
 
-namespace GuojiangClub\Activity\Server\Http\Controllers;
+namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
 use Carbon\Carbon;
-use GuojiangClub\Activity\Server\Services\ActivityService;
+use GuoJiangClub\Activity\Server\Services\ActivityService;
 use ElementVip\Component\Order\Models\Order;
 use ElementVip\Component\Payment\Contracts\PaymentChargeContract;
 use ElementVip\Component\Point\Model\Point;
 use ElementVip\Component\Point\Repository\PointRepository;
-use ElementVip\Activity\Core\Repository\MemberRepository;
-use ElementVip\Activity\Core\Repository\ActivityRepository;
-use ElementVip\Activity\Core\Models\Member;
+use GuoJiangClub\Activity\Core\Repository\MemberRepository;
+use GuoJiangClub\Activity\Core\Repository\ActivityRepository;
+use GuoJiangClub\Activity\Core\Models\Member;
 use ElementVip\Component\Payment\Models\Payment;
 use ElementVip\Component\Payment\Services\ActivityPaymentService;
 use Pingpp\WxpubOAuth;

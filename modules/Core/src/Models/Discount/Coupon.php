@@ -1,11 +1,11 @@
 <?php
-namespace GuojiangClub\Activity\Core\Models\Discount;
+namespace GuoJiangClub\Activity\Core\Models\Discount;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
-use ElementVip\Component\Discount\Models\Coupon as BaseCoupon;
+use iBrand\Component\Discount\Models\Coupon as BaseCoupon;
 
 class Coupon extends BaseCoupon
 {

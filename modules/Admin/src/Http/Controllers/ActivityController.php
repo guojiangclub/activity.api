@@ -1,28 +1,29 @@
 <?php
 
-namespace GuojiangClub\Activity\Admin\Http\Controllers;
+namespace GuoJiangClub\Activity\Admin\Http\Controllers;
 
 use Carbon\Carbon;
-use GuojiangClub\Activity\Admin\Models\Discount;
-use ElementVip\Activity\Core\Models\ActivityCategory;
-use ElementVip\Activity\Core\Models\ActivityForm;
-use ElementVip\Activity\Core\Models\ActivityGoods;
-use ElementVip\Activity\Core\Models\Member;
-use ElementVip\Activity\Core\Models\Payment;
-use ElementVip\Activity\Core\Models\Statement;
-use ElementVip\Activity\Core\Notifications\Rewards;
-use ElementVip\Activity\Core\Repository\ActivityRepository;
-use ElementVip\Backend\Http\Controllers\Controller;
-use ElementVip\Component\User\Models\User;
-use ElementVip\Component\Point\Repository\PointRepository;
+use GuoJiangClub\Activity\Admin\Models\Discount;
+use GuoJiangClub\Activity\Core\Models\ActivityCategory;
+use GuoJiangClub\Activity\Core\Models\ActivityForm;
+use GuoJiangClub\Activity\Core\Models\ActivityGoods;
+use GuoJiangClub\Activity\Core\Models\Member;
+use GuoJiangClub\Activity\Core\Models\Payment;
+use GuoJiangClub\Activity\Core\Models\Role;
+use GuoJiangClub\Activity\Core\Models\Statement;
+use GuoJiangClub\Activity\Core\Notifications\Rewards;
+use GuoJiangClub\Activity\Core\Repository\ActivityRepository;
+use iBrand\Backend\Http\Controllers\Controller;
+
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
+use iBrand\Component\Point\Repository\PointRepository;
+use iBrand\Component\User\Models\User;
 use Validator;
-use ElementVip\Activity\Core\Models\City;
-use ElementVip\Component\User\Models\Role;
-use ElementVip\Activity\Core\Models\Activity;
+use GuoJiangClub\Activity\Core\Models\City;
+use GuoJiangClub\Activity\Core\Models\Activity;
 use Maatwebsite\Excel\Facades\Excel;
-use ElementVip\Activity\Core\Repository\ActivityFormRepository;
+use GuoJiangClub\Activity\Core\Repository\ActivityFormRepository;
 use Response;
 use DB;
 
@@ -43,13 +44,17 @@ class ActivityController extends Controller
      * @param PointRepository $pointRepository
      * @param ActivityRepository $activityRepository
      */
-    public function __construct(Role $role, Activity $activity, PointRepository $pointRepository, ActivityRepository $activityRepository, ActivityFormRepository $activityFormRepository)
+    public function __construct(Role $role,
+                                Activity $activity,
+                                PointRepository $pointRepository,
+                                ActivityRepository $activityRepository,
+                                ActivityFormRepository $activityFormRepository)
     {
-        $this->role = $role;
         $this->activity = $activity;
         $this->activityRepository = $activityRepository;
         $this->point = $pointRepository;
         $this->activityForm = $activityFormRepository;
+        $this->role = $role;
     }
 
     public function index()
@@ -110,8 +115,8 @@ class ActivityController extends Controller
         $categories = ActivityCategory::all(['id', 'name']);
         $forms = ActivityForm::all(['id', 'name']);
         if ($coach) {
-            //$coachArray = $coach->users()->get();
-            $users = DB::table('el_role_user')->where('role_id', $coach->id)->get(['user_id']);
+            $prefix = config('ibrand.app.database.prefix', 'ibrand_');
+            $users = DB::table($prefix . 'role_user')->where('role_id', $coach->id)->get(['user_id']);
             if (count($users) > 0) {
                 $usersId = array_column($users->toArray(), 'user_id');
                 $coachArray = User::whereIn('id', $usersId)->get();

@@ -13,15 +13,15 @@
 <div class="tabs-container">
     <ul class="nav nav-tabs">
         <li class="{{ Active::query('status', 0) }}"><a href="{{route('activityOrder.admin.index')}}" no-pjax>所有订单
-                <span class="badge">{{ElementVip\Activity\Core\Models\Member::whereBetween('status',[0,4])->where('role', 'user')->count()}}</span></a></li>
+                <span class="badge">{{GuojiangClub\Activity\Core\Models\Member::whereBetween('status',[0,4])->where('role', 'user')->count()}}</span></a></li>
         <li class="{{ Active::query('status',1) }}"><a href="{{route('activityOrder.admin.index',['status'=>1])}}" no-pjax>已报名未签到
-                <span class="badge">{{ElementVip\Activity\Core\Models\Member::where('status',1)->where('role', 'user')->count()}}</span></a></li>
+                <span class="badge">{{GuojiangClub\Activity\Core\Models\Member::where('status',1)->where('role', 'user')->count()}}</span></a></li>
         <li class="{{ Active::query('status',2) }}"><a href="{{route('activityOrder.admin.index',['status'=>2])}}" no-pjax>已签到
-                <span class="badge">{{ElementVip\Activity\Core\Models\Member::where('status',2)->where('role', 'user')->count()}}</span></a></li>
+                <span class="badge">{{GuojiangClub\Activity\Core\Models\Member::where('status',2)->where('role', 'user')->count()}}</span></a></li>
         <li class="{{ Active::query('status',3) }}"><a href="{{route('activityOrder.admin.index',['status'=>3])}}" no-pjax>已取消
-                <span class="badge">{{ElementVip\Activity\Core\Models\Member::where('status',3)->where('role', 'user')->count()}}</span></a></li>
+                <span class="badge">{{GuojiangClub\Activity\Core\Models\Member::where('status',3)->where('role', 'user')->count()}}</span></a></li>
         <li class="{{ Active::query('status',4) }}"><a href="{{route('activityOrder.admin.index',['status'=>4])}}" no-pjax>待审核
-                <span class="badge">{{ElementVip\Activity\Core\Models\Member::where('status',4)->where('role', 'user')->count()}}</span></a></li>
+                <span class="badge">{{GuojiangClub\Activity\Core\Models\Member::where('status',4)->where('role', 'user')->count()}}</span></a></li>
     </ul>
     <div class="tab-content">
         <div id="tab-1" class="tab-pane active">
