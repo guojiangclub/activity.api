@@ -226,6 +226,13 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Menu' => Lavary\Menu\Facade::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        'Active' => HieuLe\Active\Facades\Active::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'API' => Dingo\Api\Facade\API::class
     ],
 
 ];
