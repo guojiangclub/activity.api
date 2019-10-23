@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'zh-CN',
 
     /*
     |--------------------------------------------------------------------------
@@ -201,7 +201,8 @@ return [
         iBrand\UEditor\UEditorServiceProvider::class,
         GuoJiangClub\Activity\Core\Providers\ActivityServiceProvider::class,
         GuoJiangClub\Activity\Server\Providers\ServerServiceProvider::class,
-        GuoJiangClub\Activity\Admin\Providers\ActivityAdminProvider::class
+        GuoJiangClub\Activity\Admin\Providers\ActivityAdminProvider::class,
+        GuoJiangClub\Member\Backend\Providers\BackendServiceProvider::class,
 
     ],
 

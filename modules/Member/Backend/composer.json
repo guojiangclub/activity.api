@@ -1,0 +1,25 @@
+{
+    "name": "guojiang/member-backend",
+    "description": "guojiang club member backend for laravel.",
+    "keywords": [
+        "member backend ",
+        "backend",
+        "guojiang"
+    ],
+    "authors": [
+        {
+            "name": "guojiang.club",
+            "email": "i@chenhow.com"
+        }
+    ],
+    "require": {
+
+    },
+
+    "autoload": {
+        "psr-4": {
+            "GuoJiangClub\\Member\\Backend\\": "src/"
+        }
+    },
+    "license": "MIT"
+}

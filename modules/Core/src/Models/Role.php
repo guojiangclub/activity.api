@@ -8,9 +8,9 @@
 
 namespace GuoJiangClub\Activity\Core\Models;
 
+use GuoJiangClub\Activity\Core\Models\Traits\EntrustRoleTrait;
 use Illuminate\Database\Eloquent\Model;
 use Zizaco\Entrust\Contracts\EntrustRoleInterface;
-use Zizaco\Entrust\Traits\EntrustRoleTrait;
 
 class Role extends Model implements EntrustRoleInterface
 {

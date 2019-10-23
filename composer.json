@@ -72,7 +72,8 @@
   "extra": {
     "merge-plugin": {
       "include": [
-        "modules/*/composer.json"
+        "modules/*/composer.json",
+        "modules/*/*/composer.json"
       ],
       "recurse": false,
       "replace": true,

@@ -65,15 +65,15 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\User::class,
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'api' => [
+            'driver' => 'passport',
+            'provider' => 'users',
+        ],
     ],
 
     /*
@@ -93,10 +93,10 @@ return [
 
     'passwords' => [
         'users' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-        ],
+            'driver' => 'eloquent',
+            'model' => \GuoJiangClub\Activity\Core\Models\User::class,
+            'table' => config('ibrand.app.database.prefix', 'ibrand_').'user',
+        ]
     ],
 
 ];

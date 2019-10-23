@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "241c9b63ee42edfc7983a4a25c5ffeec",
+    "content-hash": "3551e840d5b1bd5dae885e740665f5c8",
     "packages": [
         {
             "name": "anam/phantomjs-linux-x86-binary",
@@ -2315,16 +2315,16 @@
         },
         {
             "name": "ibrand/pay",
-            "version": "v0.2.0",
+            "version": "v0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guojiangclub/pay.git",
-                "reference": "5796db81bb10fb23aa0db04ab4f0976fed27a883"
+                "reference": "af77e5ef1014fd8215d8a9e259ef5f53c79af630"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guojiangclub/pay/zipball/5796db81bb10fb23aa0db04ab4f0976fed27a883",
-                "reference": "5796db81bb10fb23aa0db04ab4f0976fed27a883",
+                "url": "https://api.github.com/repos/guojiangclub/pay/zipball/af77e5ef1014fd8215d8a9e259ef5f53c79af630",
+                "reference": "af77e5ef1014fd8215d8a9e259ef5f53c79af630",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2376,7 +2376,7 @@
                 "ibrand",
                 "pay"
             ],
-            "time": "2019-05-25T08:30:19+00:00"
+            "time": "2019-10-09T11:46:51+00:00"
         },
         {
             "name": "ibrand/point",

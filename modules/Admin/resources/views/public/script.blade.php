@@ -30,24 +30,12 @@
     ue.ready(function () {
 	    ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
     });
-
-    var uepc = UE.getEditor('containerpc');
-    uepc.ready(function () {
-	    uepc.execCommand('serverparam', '_token', '{{ csrf_token() }}');
-    });
 </script>
-<!--相册-->
-{!! Html::style(env("APP_URL").'/assets/backend/file-manage/el-Upload/css/pop.css') !!}
-{!! Html::script(env("APP_URL").'/assets/backend/file-manage/bootstrap-treeview/bootstrap-treeview.min.js') !!}
+
+
 {!! Html::script(env("APP_URL").'/assets/backend/libs/jquery.el/jquery.http.js') !!}
 {!! Html::script(env("APP_URL").'/assets/backend/libs/jquery.el/page/jquery.pages.js') !!}
-{!! Html::script(env("APP_URL").'/assets/backend/activity/js/pop.js') !!}
-<script>
-    $("#upload").on("click", function () {
-	    var el_list = $(this);
-	    $.addImage(el_list, "selectHighlight");
-    });
-</script>
+
 <script>
     // 初始化Web Uploader
     $(document).ready(function () {

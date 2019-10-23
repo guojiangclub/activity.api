@@ -18,7 +18,6 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label"><span style="color: red">*</span>免责声明：</label>
                     <div class="col-md-8">
-                        <div id="upload" class="btn btn-primary">插入相册图片</div>
                         <script id="container" name="statement" type="text/plain">
                             @if(isset($model) && $model){!!  $model->statement !!}@endif
                         </script>
@@ -35,13 +34,10 @@
         </div>
     </div>
 </div>
-<!--相册-->
-{!! Html::style(env("APP_URL").'/assets/backend/file-manage/el-Upload/css/pop.css') !!}
-{!! Html::script(env("APP_URL").'/assets/backend/file-manage/bootstrap-treeview/bootstrap-treeview.min.js') !!}
+
 {!! Html::script(env("APP_URL").'/assets/backend/libs/jquery.el/jquery.http.js') !!}
 {!! Html::script(env("APP_URL").'/assets/backend/libs/jquery.el/page/jquery.pages.js') !!}
-{!! Html::script(env("APP_URL").'/assets/backend/activity/js/pop.js') !!}
-{{--@include('vendor.ueditor.assets')--}}
+
 @include('UEditor::head')
 <script>
     var ue = UE.getEditor('container', {
@@ -53,10 +49,6 @@
         ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
     });
 
-    var uepc = UE.getEditor('containerpc');
-    uepc.ready(function () {
-        uepc.execCommand('serverparam', '_token', '{{ csrf_token() }}');
-    });
 
     $("#upload").on("click", function () {
         var el_list = $(this);
