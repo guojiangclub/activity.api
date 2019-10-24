@@ -12,7 +12,6 @@
 namespace GuoJiangClub\Member\Backend\Providers;
 
 use GuoJiangClub\Member\Backend\Console\RolesCommand;
-use GuoJiangClub\Member\Backend\Console\VipPlanMenus;
 use GuoJiangClub\Member\Backend\MemberBackend;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -63,15 +62,8 @@ class BackendServiceProvider extends ServiceProvider
                 __DIR__.'/../../resources/assets/images' => public_path('assets/backend/images'),
             ], 'member-backend-assets-images');
 
-            //添加配置文件
-            $this->publishes([
-                __DIR__.'/../../config/wx_card.php' => config_path('wx_card.php'),
-            ], 'wx_card-config');
-        }
 
-        $this->commands([
-        	VipPlanMenus::class
-        ]);
+        }
     }
 
     public function register()

@@ -14,31 +14,9 @@
 
             <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="false">搜索</a></li>
 
-            <a data-toggle="modal"
-               data-target="#modal" data-backdrop="static" data-keyboard="false"
-               data-url="{{route('admin.users.importUser')}}"
-               class="btn btn-w-m btn-info pull-right">批量导入会员</a>
-
             <a href="{{route('admin.users.create')}}" class="btn btn-w-m btn-info pull-right" style="margin-right: 5px">添加会员</a>
 
 
-            <div class="btn-group pull-right" style="margin-right: 5px">
-                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
-                   href="javascript:;" data-style="zoom-in">导出<span
-                            class="caret"></span></a>
-                <ul class="dropdown-menu">
-
-                    <li><a class="export-goods" data-toggle="modal"
-                           data-target="#modal" data-backdrop="static" data-keyboard="false"
-                           data-url="{{route('admin.users.userexport',['type'=>'xls'])}}"
-                           href="javascript:;">导出xls格式</a></li>
-
-                    <li><a class="export-goods" data-toggle="modal"
-                           data-target="#modal" data-backdrop="static" data-keyboard="false"
-                           data-url="{{route('admin.users.userexport',['type'=>'csv'])}}"
-                           href="javascript:;">导出csv格式</a></li>
-                </ul>
-            </div>
         </ul>
         <div class="tab-content">
             <div id="tab-1" class="tab-pane active">

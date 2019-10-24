@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use GuoJiangClub\Activity\Admin\Models\Discount;
 use GuoJiangClub\Activity\Core\Models\ActivityCategory;
 use GuoJiangClub\Activity\Core\Models\ActivityForm;
-use GuoJiangClub\Activity\Core\Models\ActivityGoods;
 use GuoJiangClub\Activity\Core\Models\Member;
 use GuoJiangClub\Activity\Core\Models\Payment;
 use GuoJiangClub\Activity\Core\Models\Role;
@@ -203,8 +202,6 @@ class ActivityController extends Controller
 
             $this->storePoint($activity);
 
-            $this->storeGoods(request('item'), $activity->id);
-
             DB::commit();
 
             return response()->json(['status' => true]);
@@ -329,10 +326,6 @@ class ActivityController extends Controller
 
             $this->storePoint($activity);
 
-            if ($activity_status == 0) {
-                $this->storeGoods(request('item'), $activity->id);
-            }
-
             DB::commit();
 
             return response()->json(['status' => true]);
@@ -373,11 +366,9 @@ class ActivityController extends Controller
         $statements = Statement::all(['id', 'title']);
         $categories = ActivityCategory::all(['id', 'name']);
         $forms = ActivityForm::all(['id', 'name']);
-        //$coachArray    = $this->role->where("name", "coach")->first()->users()->get();
         $coachArray = [];
         $coach = $this->role->where("name", "coach")->first();
         if ($coach) {
-            //$coachArray = $coach->users()->get();
             $users = DB::table('el_role_user')->where('role_id', $coach->id)->get(['user_id']);
             if (count($users) > 0) {
                 $usersId = array_column($users->toArray(), 'user_id');
@@ -834,26 +825,6 @@ class ActivityController extends Controller
             $actPoint = $activity->points()->where('type', 'coach_rewards')->first();
             if ($actPoint) {
                 $actPoint->delete();
-            }
-        }
-    }
-
-
-    protected function storeGoods($goods, $activity_id)
-    {
-        if ($goods AND count($goods) > 0) {
-            $activity_goods = ActivityGoods::where('activity_id', $activity_id)->get();
-            if ($activity_goods) ActivityGoods::destroy($activity_goods->pluck('id')->toArray());
-
-            foreach ($goods as $item) {
-                $data = [
-                    'activity_id' => $activity_id,
-                    'goods_id' => $item['goods_id'],
-                    'rate' => $item['rate'],
-                    'price' => $item['price'],
-                    'required' => $item['required']
-                ];
-                ActivityGoods::create($data);
             }
         }
     }
