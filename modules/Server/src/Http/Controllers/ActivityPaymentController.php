@@ -132,69 +132,6 @@ class ActivityPaymentController extends Controller
         }
     }
 
-    /**
-     * 这是一个舍弃的方法,请勿使用
-     * @return \Dingo\Api\Http\Response
-     */
-    public function miniCreateCharge()
-    {
-        $user = request()->user();
-        $input = request()->except('_token');
-        $validator = Validator::make($input, [
-            'order_no' => 'required',
-            'channel' => 'required',
-            'openid' => 'required',
-        ], [
-            'order_no.required' => '提交支付请求失败,必填参数缺失',
-            'channel.required' => '提交支付请求失败,必填参数缺失',
-            'openid.required' => '提交支付请求失败,必填参数缺失',
-        ]);
-        if ($validator->fails()) {
-            $errors = $validator->errors()->all();
-
-            return $this->api([], false, 500, $errors);
-        }
-
-        $order_no = $input['order_no'];
-        $order = $this->member->with('payment')->findWhere(['order_no' => $input['order_no']])->first();
-        if (!$input['order_no'] || !$order) {
-
-            return $this->api([], false, 500, '订单不存在');
-        }
-
-        $activity = $this->activity->find($order->activity_id);
-        if (!$activity) {
-            return $this->api(null, false, 500, '活动不存在');
-        }
-
-        if ($order['pay_status'] == 1) {
-            return $this->api([], false, 500, '订单已支付');
-        }
-
-        if ($order->status == Member::STATUS_INVALID) {
-            return $this->api(null, false, 500, '无法支付');
-        }
-
-        if (request('channel') == 'wx_lite') {
-
-            $name = $this->charge->getName();
-
-            $charge = $this->charge->createCharge($order->user_id
-                , request('channel')
-                , 'activity'
-                , $order_no
-                , $order->price
-                , $activity->id . ' ' . $activity->title
-                , $activity->id . ' ' . $activity->title
-                , request()->getClientIp()
-                , $input['openid']
-                , request('extra'));
-
-            return $this->api(compact('charge', 'name'));
-        }
-
-        return $this->api(null, false, 500, '请求支付失败，请稍后重试');
-    }
 
     public function paidSuccess()
     {

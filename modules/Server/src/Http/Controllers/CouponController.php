@@ -7,7 +7,7 @@ use GuoJiangClub\Activity\Core\Models\Discount\Coupon;
 use GuoJiangClub\Activity\Core\Repository\CouponRepository;
 use GuoJiangClub\Activity\Core\Repository\DiscountRepository;
 use GuoJiangClub\Activity\Server\Transformers\CouponTransformer;
-use ElementVip\Component\User\Models\User;
+
 use ElementVip\Component\User\Models\UserBind;
 use Illuminate\Http\Request;
 
@@ -62,9 +62,7 @@ class CouponController extends Controller
             if (!$this->couponRepository->canGetCoupon($discount, $user)) {
                 return $this->api([], false, 500, '该活动通行证已达到领取上限.');
             }
-            /*if ($coupon = Coupon::where('discount_id', $discount->id)->where('user_id', $user->id)->where('created_at', '>', date('Y-m-01 0:00:00'))->first()) {
-                return $this->api([], false, 500, '本月已领取过野练PASS.');
-            }*/
+
 
             if (!$this->couponRepository->canGetCouponByMonth($discount, $user)) {
                 return $this->api([], false, 500, '本月已领取过活动通行证.');

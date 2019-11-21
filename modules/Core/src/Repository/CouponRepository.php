@@ -1,10 +1,11 @@
 <?php
 namespace GuoJiangClub\Activity\Core\Repository;
 
-use ElementVip\Component\Discount\Contracts\DiscountContract;
+
+use iBrand\Component\Discount\Contracts\DiscountContract;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
-interface CouponRepository extends \ElementVip\Component\Discount\Repositories\CouponRepository
+interface CouponRepository extends \iBrand\Component\Discount\Repositories\CouponRepository
 {
 
     public function canGetCoupon(DiscountContract $discount, $user);

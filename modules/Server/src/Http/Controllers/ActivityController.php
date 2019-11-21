@@ -3,19 +3,16 @@
 namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
 use GuoJiangClub\Activity\Core\Models\Activity;
-use GuoJiangClub\Activity\Core\Models\ActivityOrders;
 use GuoJiangClub\Activity\Core\Models\City;
 use GuoJiangClub\Activity\Core\Models\Like;
 use GuoJiangClub\Activity\Core\Models\Member;
 use GuoJiangClub\Activity\Core\Repository\ActivityRepository;
 use GuoJiangClub\Activity\Server\Services\ActivityService;
 use GuoJiangClub\Activity\Server\Transformers\ActivityTransformer;
-use ElementVip\Component\Order\Models\Order;
-use ElementVip\Component\Point\Repository\PointRepository;
 use GuoJiangClub\Activity\Core\Repository\MemberRepository;
 use GuoJiangClub\Activity\Core\Repository\PaymentRepository;
-use ElementVip\Component\Point\Model\Point;
 use GuoJiangClub\Activity\Server\Services\MiniProgramService;
+use iBrand\Component\Point\Repository\PointRepository;
 use Storage;
 
 class ActivityController extends Controller
@@ -79,8 +76,7 @@ class ActivityController extends Controller
             $query->where('status', 1);
         }])->find($id);
         if ($activity) {
-            $goods = $this->activityService->getActivityGoods($activity);
-            return $this->response()->item($activity, new ActivityTransformer())->setMeta(['goods' => $goods]);
+            return $this->response()->item($activity, new ActivityTransformer());
         }
 
         return $this->api([], false, 500, '活动不存在.');
@@ -92,14 +88,13 @@ class ActivityController extends Controller
         $user = request()->user();
         $activityIds = Member::where('user_id', $user->id)
             ->where('role', 'user')
-            //->where('status', '<>', 3)
             ->pluck('activity_id')->toArray();
         if ($canceled = request('canceled') AND $canceled == 1) {
             $activityIdsCanceled = Member::where('user_id', $user->id)
                 ->where('role', 'user')
                 ->where('status', 3)
                 ->pluck('activity_id')->toArray();
-            //$activityIdsCanceled = array_diff($activityIdsCanceled, $activityIds);
+
             $activities = Activity::whereIn('id', $activityIdsCanceled)->where('status', '<>', 0);
         } else {
             if (!$status = request('status') OR !is_numeric($status) OR $status == 0) {
@@ -121,31 +116,22 @@ class ActivityController extends Controller
             return $this->api([], false, 500, '活动不存在.');
         }
         $user = request()->user();
-        $ShopOrder = null;
-        if ($member = $this->activityService->getMember($activity, $user->id)) {
-            $point = $this->pointRepository->getSumPointValid($user->id, 'default');
 
-            $orderRelation = ActivityOrders::where('member_id', $member->id)->where('activity_id', $activity->id)->first();
-            if ($orderRelation) {
-                $ShopOrder = Order::with('items')->find($orderRelation->order_id);
-            }
+        if ($member = $this->activityService->getMember($activity, $user->id)) {
+            $point = $this->pointRepository->getSumPointValid($user->id);
 
             $formData = $this->activityService->getFormData($member);
 
             return $this->response()->item($activity, new ActivityTransformer())->setMeta([
                 'point' => $point,
                 'pointUsed' => $member->point,
-                'shopOrder' => $ShopOrder,
                 'activityOrder' => $member,
                 'formData' => $formData
             ]);
         } elseif ($member = $activity->members()->where('user_id', $user->id)->where('role', 'user')->orderBy('created_at', 'desc')->first()) {
-            $orderRelation = ActivityOrders::where('member_id', $member->id)->where('activity_id', $activity->id)->first();
-            if ($orderRelation) {
-                $ShopOrder = Order::with('items')->find($orderRelation->order_id);
-            }
+
             $formData = $this->activityService->getFormData($member);
-            return $this->response()->item($activity, new ActivityTransformer())->setMeta(['shopOrder' => $ShopOrder, 'activityOrder' => $member, 'formData' => $formData]);
+            return $this->response()->item($activity, new ActivityTransformer())->setMeta(['activityOrder' => $member, 'formData' => $formData]);
         }
 
         return $this->api([], false, 500, '未报名此活动.');
@@ -260,20 +246,12 @@ class ActivityController extends Controller
 
         $payment = $this->payment->find($order->payment_id);
 
-        //$point = Point::where('user_id', $order->user_id)->valid()->sumPoint();
         $point = app(PointRepository::class)->getSumPointValid($order->user_id);
-
-        $ShopOrder = null;
-        $orderRelation = ActivityOrders::where('member_id', $order->id)->where('activity_id', $activity->id)->first();
-        if ($orderRelation) {
-            $ShopOrder = Order::with('items')->find($orderRelation->order_id);
-        }
 
         return $this->api([
             'activity' => $activity,
             'payment' => $payment,
             'point' => $point,
-            'shopOrder' => $ShopOrder,
             'activityOrder' => $order
         ]);
     }

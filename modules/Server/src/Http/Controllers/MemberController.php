@@ -8,16 +8,13 @@ use GuoJiangClub\Activity\Core\Models\Discount\Coupon;
 use GuoJiangClub\Activity\Core\Models\Like;
 use GuoJiangClub\Activity\Core\Models\Member;
 use GuoJiangClub\Activity\Core\Models\Payment;
-use GuoJiangClub\Activity\Core\Notifications\Signed;
 use GuoJiangClub\Activity\Core\Repository\ActivityRepository;
 use GuoJiangClub\Activity\Core\Repository\CouponRepository;
 use GuoJiangClub\Activity\Core\Repository\DiscountRepository;
 use GuoJiangClub\Activity\Core\Repository\MemberRepository;
 use GuoJiangClub\Activity\Server\Services\ActivityService;
 use GuoJiangClub\Activity\Server\Transformers\ActivityTransformer;
-use ElementVip\Component\Point\Repository\PointRepository;
-use ElementVip\Component\User\Models\User;
-use ElementVip\Notifications\PointRecord;
+use iBrand\Component\Point\Repository\PointRepository;
 
 class MemberController extends Controller
 {
@@ -209,16 +206,6 @@ class MemberController extends Controller
                     'item_id' => $activity->id,
                 ]);
 
-                $user->notify(new PointRecord(['point' => [
-                    'user_id' => $targetId,
-                    'action' => 'activity_reward',
-                    'note' => '野练奖励积分',
-                    'value' => $point,
-                    'valid_time' => 0,
-                    'status' => 0,
-                    'item_type' => Activity::class,
-                    'item_id' => $activity->id,
-                ]]));
             }
         }
 

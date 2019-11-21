@@ -3,12 +3,9 @@ namespace GuoJiangClub\Activity\Server\Services;
 
 use Carbon\Carbon;
 use DNS2D;
-use GuoJiangClub\Activity\Core\Models\ActivityGoods;
+
 use GuoJiangClub\Activity\Core\Models\Answer;
 use GuoJiangClub\Activity\Core\Models\Like;
-use ElementVip\Component\Product\Models\Goods;
-use ElementVip\Component\Product\Models\Specification;
-use iBrand\Shoppingcart\Item;
 use Illuminate\Support\Collection;
 
 class ActivityService
@@ -120,123 +117,6 @@ class ActivityService
         return 0;
     }
 
-    /**
-     * 获取活动关联的商品
-     * @param $activity
-     * @return array
-     */
-    public function getActivityGoods($activity)
-    {
-        $activityGoods = $activity->goods;
-        $goodsList = [];
-
-        if (count($activityGoods) > 0) {
-            foreach ($activityGoods as $ak => $goods) {
-                $specs = [];
-                $stores = [];
-                $skuPhoto = collect();
-
-                if (count($products = $goods->products()->with('photo')->get())) {
-                    $grouped = $goods->specificationValue->groupBy('spec_id');
-                    foreach ($products as $key => $val) {
-                        $specArray = $val->specID;
-                        asort($specArray);
-
-                        $spec_id = implode('-', $specArray);
-                        $stores[$spec_id]['id'] = $val->id;
-                        $stores[$spec_id]['store'] = $val->is_show == 1 ? $val->store_nums : 0;
-
-                        $stores[$spec_id]['price'] = $goods->pivot->price;
-
-                        $stores[$spec_id]['sku'] = $val->sku;
-                        $stores[$spec_id]['ids'] = $val->specID;
-                        $stores[$spec_id]['redeem_point'] = $goods->redeem_point;
-
-                        //产品图片
-                        if ($photo = $val->photo) {
-                            $skuPhotoData['spec_value_id'] = $spec_id;
-                            $skuPhotoData['photo'] = $photo->url;
-                            $skuPhoto->push($skuPhotoData);
-                        }
-                    }
-
-                    $i = 1;
-                    foreach ($grouped as $key => $item) {
-
-                        $keys = $grouped->keys()->toArray();
-                        if (in_array(2, $keys)) {   //如果有颜色规格，因为颜色ID=2，为了保证 颜色排前面，需要这样处理sort
-                            $sort = $key == 1 ? $key + 2 : $key;
-                        } else {
-                            $sort = $key;
-                        }
-
-                        $specs[$sort]['id'] = $key;
-
-                        $spec = Specification::find($key);
-
-                        if (count($grouped) == 1) {  //如果是单规格
-                            if ($key == 2) {  //如果是颜色
-                                $specs[$sort]['label_key'] = 'color';
-                            } else {  //否则是其他规格
-                                $specs[$sort]['label_key'] = 'size';
-                            }
-                        } else {  //如果是双规格
-                            if (in_array(2, $keys)) { //如果有颜色规格
-                                if ($key == 2) {  //如果是颜色
-                                    $specs[$sort]['label_key'] = 'color';
-                                } else {  //否则是其他规格
-                                    $specs[$sort]['label_key'] = 'size';
-                                }
-                            } else {  //没有颜色规格
-                                if ($i == 1) {
-                                    $specs[$sort]['label_key'] = 'color';
-                                } else {
-                                    $specs[$sort]['label_key'] = 'size';
-                                }
-                            }
-                        }
-                        $i++;
-
-
-                        $specs[$sort]['label'] = $spec->name;
-                        $specs[$sort]['list'] = [];
-                        $item = $item->sortBy('pivot.sort')->values();
-                        foreach ($item as $k => $value) {
-                            $list = [];
-                            $list['id'] = $value->id;
-                            $list['value'] = $value->name;
-
-                            if ($value->spec_id == 2)    //颜色
-                            {
-                                $list['color'] = '#' . $value->rgb;
-                                $list['img'] = $this->getImageCdnUrl($value->pivot->img);
-
-                                $list['spec_img'] = $this->getImageCdnUrl($value->pivot->img);
-                            }
-                            $list['alias'] = $value->pivot->alias;
-                            array_push($specs[$sort]['list'], $list);
-                        }
-                    }
-                }
-
-                $acGoods = ActivityGoods::where('activity_id', $activity->id)->where('goods_id', $goods->id)->first();
-                $goodsInfo['id'] = $goods->id;
-                $goodsInfo['name'] = $goods->name;
-                $goodsInfo['market_price'] = $goods->market_price;
-                $goodsInfo['img'] = $goods->img;
-                $goodsInfo['sell_price'] = $acGoods->price;
-                $goodsInfo['required'] = $acGoods->required;
-                $goodsInfo['rate'] = $acGoods->rate;
-                $goodsInfo['store_nums'] = $goods->store_nums;
-
-                $goodsList[$ak]['goods'] = $goodsInfo;
-                $goodsList[$ak]['specs'] = $specs;
-                $goodsList[$ak]['stores'] = $stores;
-
-            }
-        }
-        return $goodsList;
-    }
 
     private function getImageCdnUrl($value)
     {

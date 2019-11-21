@@ -3,25 +3,21 @@
 namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
 use Carbon\Carbon;
+use GuoJiangClub\Activity\Core\Discount\Services\DiscountService;
 use GuoJiangClub\Activity\Core\Models\Activity;
-use GuoJiangClub\Activity\Core\Models\ActivityOrders;
 use GuoJiangClub\Activity\Core\Models\ActivityRefundLog;
 use GuoJiangClub\Activity\Core\Models\Discount\Coupon;
 use GuoJiangClub\Activity\Core\Models\Member;
 use GuoJiangClub\Activity\Core\Models\Payment;
 use GuoJiangClub\Activity\Core\Models\Answer;
-use GuoJiangClub\Activity\Core\Notifications\Join;
 use GuoJiangClub\Activity\Core\Repository\ActivityRepository;
 use GuoJiangClub\Activity\Core\Repository\MemberRepository;
 use GuoJiangClub\Activity\Core\Repository\PaymentRepository;
-use GuoJiangClub\Activity\Core\Services\DiscountService;
 use GuoJiangClub\Activity\Server\Services\ActivityService;
-use ElementVip\Component\Discount\Applicators\DiscountApplicator;
-use ElementVip\Component\Point\Repository\PointRepository;
 use GuoJiangClub\Activity\Core\Models\Refund;
+use iBrand\Component\Discount\Applicators\DiscountApplicator;
+use iBrand\Component\Point\Repository\PointRepository;
 use Illuminate\Events\Dispatcher;
-use ElementVip\Notifications\PointRecord;
-use ElementVip\Component\User\Models\User;
 use DB;
 
 class PurchaseController extends Controller
@@ -173,7 +169,7 @@ class PurchaseController extends Controller
 			//如果线下现金支付,暂时不做任何操作
 
 		} else {
-			$point = $this->pointRepository->getSumPointValid($user->id, 'default');
+			$point = $this->pointRepository->getSumPointValid($user->id);
 		}
 
 		DB::beginTransaction();
@@ -200,7 +196,6 @@ class PurchaseController extends Controller
 
 				$pay_status = 1;
 				$activity->update(['member_count' => $activity->member_count + 1]);
-				$user->notify(new Join(['activity' => $activity]));
 			} elseif ($activity->isPassType(4)) {
 				$payment = $activity->isPassType(4);
 				//如果是线下现金支付
@@ -263,15 +258,7 @@ class PurchaseController extends Controller
 				event('point.change', $user->id);
 				$activity->update(['member_count' => $activity->member_count + 1]);
 				$pay_status = 1;
-				$user->notify(new PointRecord(['point' => [
-					'user_id'    => $user->id,
-					'action'     => 'activity',
-					'note'       => '活动报名',
-					'value'      => (-1) * $payment->point,
-					'valid_time' => 0,
-					'item_type'  => Payment::class,
-					'item_id'    => $payment->id,
-				]]));
+
 
 				if ($payment->limit > 0 && $payment->is_limit == 1) {
 					$payment->update(['limit' => $payment->limit - 1]);
@@ -480,15 +467,7 @@ class PurchaseController extends Controller
 				]);
 
 				event('point.change', $user_id);
-				$user->notify(new PointRecord(['point' => [
-					'user_id'    => $user_id,
-					'action'     => 'activity_refund',
-					'note'       => '取消活动报名,返还积分',
-					'value'      => $member->point,
-					'valid_time' => 0,
-					'item_type'  => Payment::class,
-					'item_id'    => $member->payment->id,
-				]]));
+
 			} elseif ($member->payment AND ($member->payment->type == 1 || $member->payment->type == 2)) {
 				//金额  || 金额+积分
 				if ($member->payment->type == 2 && $order->status == 1 && $member->pay_status != 0) {
@@ -503,15 +482,7 @@ class PurchaseController extends Controller
 					]);
 
 					event('point.change', $user_id);
-					$user->notify(new PointRecord(['point' => [
-						'user_id'    => $user_id,
-						'action'     => 'activity_refund',
-						'note'       => '取消活动报名,返还积分',
-						'value'      => $member->point,
-						'valid_time' => 0,
-						'item_type'  => Payment::class,
-						'item_id'    => $member->payment->id,
-					]]));
+
 				}
 
 				if ($activity->refund_status == 1 && $member->pay_status != 0 && $member->status != 0) {
