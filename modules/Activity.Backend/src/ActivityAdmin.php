@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace GuoJiangClub\Activity\Admin;
+namespace GuoJiangClub\Activity\Backend;
 
 use Encore\Admin\Admin;
 use Encore\Admin\Extension;

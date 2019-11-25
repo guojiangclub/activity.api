@@ -167,16 +167,6 @@ return [
         /*
          * Package Service Providers...
          */
-
-        /*
-         * Application Service Providers...
-         */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
-
         Laravel\Passport\PassportServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
@@ -201,9 +191,17 @@ return [
         iBrand\UEditor\UEditorServiceProvider::class,
         GuoJiangClub\Activity\Core\Providers\ActivityServiceProvider::class,
         GuoJiangClub\Activity\Server\Providers\ServerServiceProvider::class,
-        GuoJiangClub\Activity\Admin\Providers\ActivityAdminProvider::class,
+        GuoJiangClub\Activity\Backend\Providers\ActivityAdminProvider::class,
         GuoJiangClub\Member\Backend\Providers\BackendServiceProvider::class,
 
+        /*
+         * Application Service Providers...
+         */
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
     ],
 
     /*
