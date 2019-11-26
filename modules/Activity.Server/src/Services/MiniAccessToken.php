@@ -11,7 +11,7 @@
 
 namespace GuoJiangClub\Activity\Server\Services;
 
-use ElementVip\Wechat\Server\Overtrue\AccessToken as CoreAccessToken;
+use GuoJiangClub\Wechat\Server\Overtrue\AccessToken as CoreAccessToken;
 
 class MiniAccessToken extends CoreAccessToken
 {

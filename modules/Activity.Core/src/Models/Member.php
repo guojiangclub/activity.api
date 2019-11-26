@@ -11,10 +11,10 @@
 
 namespace GuoJiangClub\Activity\Core\Models;
 
-use ElementVip\Component\Discount\Contracts\DiscountSubjectContract;
-use ElementVip\Component\Order\Models\Order;
-use ElementVip\Component\Point\Model\Point;
-use ElementVip\Component\User\Models\User;
+use iBrand\Component\Discount\Contracts\DiscountSubjectContract;
+use GuoJiangClub\Component\Order\Models\Order;
+use GuoJiangClub\Component\Point\Model\Point;
+use iBrand\Component\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;

@@ -12,7 +12,7 @@
 namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
 use DB;
-use ElementVip\Component\User\Models\Role;
+use GuoJiangClub\Component\User\Models\Role;
 use GuoJiangClub\Activity\Core\Models\Activity;
 use GuoJiangClub\Activity\Core\Models\City;
 use GuoJiangClub\Activity\Core\Models\Statement;

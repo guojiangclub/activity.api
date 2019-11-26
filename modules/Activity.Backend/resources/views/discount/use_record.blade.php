@@ -112,7 +112,7 @@
                                                 <tr class="coupon{{$coupon->id}}">
                                                 <td><input class="checkbox"   type="checkbox" value="{{$coupon->id}}" name="ids[]"></td>
                                                     <td>{{$coupon->created_at}}</td>
-                                                    <td>{{ElementVip\Store\Backend\Model\ElDiscount::find($coupon->discount_id)->title}}</td>
+                                                    <td>{{GuoJiangClub\Store\Backend\Model\ElDiscount::find($coupon->discount_id)->title}}</td>
                                                     <td>{{$coupon->code}}</td>
                                                     <td>{{$coupon->order[0]->order_no}}</td>
                                                         {{--@foreach($coupon['relations'] as $item)--}}
@@ -141,7 +141,7 @@
                                                                 @endif
                                                             </td>
                                                         {{--@endforeach--}}
-                                                    <td>{!! ElementVip\Store\Backend\Model\User::find($coupon->user_id)->name!!}</td>
+                                                    <td>{!! GuoJiangClub\Store\Backend\Model\User::find($coupon->user_id)->name!!}</td>
                                                     {{--<td>{{$coupon->note}}</td>--}}
                                                 </tr>
                                             @endforeach

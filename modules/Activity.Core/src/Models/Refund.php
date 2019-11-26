@@ -11,7 +11,7 @@
 
 namespace GuoJiangClub\Activity\Core\Models;
 
-use ElementVip\Component\User\Models\User;
+use GuoJiangClub\Component\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 

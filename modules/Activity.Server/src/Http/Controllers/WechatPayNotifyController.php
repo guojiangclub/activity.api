@@ -12,7 +12,7 @@
 namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
 use EasyWeChat;
-use ElementVip\Component\Payment\Services\ActivityPaymentService;
+use GuoJiangClub\Component\Payment\Services\ActivityPaymentService;
 
 class WechatPayNotifyController extends Controller
 {

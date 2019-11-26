@@ -137,7 +137,7 @@
                                                                 @endif
                                                             </td>
                                                         {{--@endforeach--}}
-                                                    <td>{!! ElementVip\Store\Backend\Model\User::find($coupon->order->user_id)->name!!}</td>
+                                                    <td>{!! GuoJiangClub\Store\Backend\Model\User::find($coupon->order->user_id)->name!!}</td>
                                                     <td>{{$coupon->created_at}}</td>
                                                     {{--<td>{{$coupon->note}}</td>--}}
                                                 </tr>

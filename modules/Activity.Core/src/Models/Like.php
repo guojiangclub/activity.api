@@ -11,8 +11,8 @@
 
 namespace GuoJiangClub\Activity\Core\Models;
 
-use ElementVip\Component\Favorite\Models\Favorite;
-use ElementVip\Component\User\Models\User;
+use GuoJiangClub\Component\Favorite\Models\Favorite;
+use GuoJiangClub\Component\User\Models\User;
 
 class Like extends Favorite
 {

@@ -13,7 +13,7 @@ namespace GuoJiangClub\Activity\Backend\Http\Controllers;
 
 use Carbon\Carbon;
 use DB;
-use ElementVip\Component\User\Models\User;
+use GuoJiangClub\Component\User\Models\User;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use Excel;
@@ -289,16 +289,16 @@ class ActivityOrderController extends Controller
         }
 
         if (!empty($search)) {
-            $data->join('el_user', function ($join) use ($search) {
-                $join->on('ac_activity_member.user_id', '=', 'el_user.id')->where('el_user.'.$search[0], $search[1], $search[2]);
+            $data->join('ibrand_user', function ($join) use ($search) {
+                $join->on('ac_activity_member.user_id', '=', 'ibrand_user.id')->where('ibrand_user.'.$search[0], $search[1], $search[2]);
             });
         } else {
-            $data->join('el_user', function ($join) use ($search) {
-                $join->on('ac_activity_member.user_id', '=', 'el_user.id');
+            $data->join('ibrand_user', function ($join) use ($search) {
+                $join->on('ac_activity_member.user_id', '=', 'ibrand_user.id');
             });
         }
 
-        $data->select('ac_activity_member.*', 'el_user.id as user_id', 'el_user.name', 'el_user.mobile', 'el_user.sex', 'el_user.email');
+        $data->select('ac_activity_member.*', 'ibrand_user.id as user_id', 'ibrand_user.name', 'ibrand_user.mobile', 'ibrand_user.sex', 'ibrand_user.email');
 
         if (0 == $limit) {
             return $data->get();

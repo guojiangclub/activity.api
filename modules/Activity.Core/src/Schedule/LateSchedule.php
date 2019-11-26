@@ -12,7 +12,7 @@
 namespace GuoJiangClub\Activity\Core\Schedule;
 
 use Carbon\Carbon;
-use ElementVip\Scheduling\Schedule\Scheduling;
+use GuoJiangClub\Scheduling\Schedule\Scheduling;
 use GuoJiangClub\Activity\Core\Models\Activity;
 use GuoJiangClub\Activity\Core\Notifications\Late;
 

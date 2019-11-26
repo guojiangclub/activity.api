@@ -12,9 +12,9 @@
 namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
 use EasyWeChat;
-use ElementVip\Component\Payment\Contracts\PaymentChargeContract;
-use ElementVip\Component\Payment\Services\ActivityPaymentService;
-use ElementVip\Component\Point\Repository\PointRepository;
+use GuoJiangClub\Component\Payment\Contracts\PaymentChargeContract;
+use GuoJiangClub\Component\Payment\Services\ActivityPaymentService;
+use GuoJiangClub\Component\Point\Repository\PointRepository;
 use GuoJiangClub\Activity\Core\Models\Member;
 use GuoJiangClub\Activity\Core\Repository\ActivityRepository;
 use GuoJiangClub\Activity\Core\Repository\MemberRepository;

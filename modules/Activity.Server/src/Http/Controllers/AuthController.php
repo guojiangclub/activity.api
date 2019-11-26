@@ -11,7 +11,7 @@
 
 namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
-use ElementVip\Component\User\Models\UserBind;
+use GuoJiangClub\Component\User\Models\UserBind;
 
 class AuthController extends Controller
 {

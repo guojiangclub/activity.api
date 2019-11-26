@@ -12,9 +12,9 @@
 namespace GuoJiangClub\Activity\Core\Models;
 
 use Carbon\Carbon;
-use ElementVip\Component\Point\Model\Point;
-use ElementVip\Component\Product\Models\Goods;
-use ElementVip\Component\User\Models\User;
+use GuoJiangClub\Component\Point\Model\Point;
+use GuoJiangClub\Component\Product\Models\Goods;
+use GuoJiangClub\Component\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 

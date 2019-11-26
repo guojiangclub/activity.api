@@ -11,7 +11,7 @@
 
 namespace GuoJiangClub\Activity\Backend\Models;
 
-use ElementVip\Component\User\Models\User;
+use GuoJiangClub\Component\User\Models\User;
 use GuoJiangClub\Activity\Core\Models\Discount\Coupon;
 
 class DiscountCoupon extends Coupon

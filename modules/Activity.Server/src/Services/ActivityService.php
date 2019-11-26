@@ -171,12 +171,12 @@ class ActivityService
                 $input['size'] = isset($item['attributes']['size']) ? $item['attributes']['size'] : [];
                 $input['com_id'] = isset($item['attributes']['com_id']) ? $item['attributes']['com_id'] : [];
                 $input['type'] = 'sku';
-                $input['__model'] = 'ElementVip\Component\Product\Models\Product';
+                $input['__model'] = 'GuoJiangClub\Component\Product\Models\Product';
             } else {
                 $input['size'] = isset($item['size']) ? $item['size'] : '';
                 $input['color'] = isset($item['color']) ? $item['color'] : '';
                 $input['type'] = 'spu';
-                $input['__model'] = 'ElementVip\Component\Product\Models\Goods';
+                $input['__model'] = 'GuoJiangClub\Component\Product\Models\Goods';
                 $input['com_id'] = $item['id'];
             }
             $data = new Item(array_merge($input), $item);

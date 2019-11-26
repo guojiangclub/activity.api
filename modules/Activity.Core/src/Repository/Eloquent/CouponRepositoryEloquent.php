@@ -11,12 +11,12 @@
 
 namespace GuoJiangClub\Activity\Core\Repository\Eloquent;
 
-use ElementVip\Component\Discount\Contracts\DiscountContract;
+use iBrand\Component\Discount\Contracts\DiscountContract;
 use GuoJiangClub\Activity\Core\Models\Discount\Coupon;
 use GuoJiangClub\Activity\Core\Repository\CouponRepository;
 //use
 
-class CouponRepositoryEloquent extends \ElementVip\Component\Discount\Repositories\Eloquent\CouponRepositoryEloquent implements CouponRepository
+class CouponRepositoryEloquent extends \iBrand\Component\Discount\Repositories\Eloquent\CouponRepositoryEloquent implements CouponRepository
 {
     /**
      * Specify Model class name.

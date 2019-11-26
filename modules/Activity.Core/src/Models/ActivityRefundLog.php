@@ -11,8 +11,8 @@
 
 namespace GuoJiangClub\Activity\Core\Models;
 
-use ElementVip\Backend\Models\Admin;
-use ElementVip\Component\User\Models\User;
+use GuoJiangClub\Backend\Models\Admin;
+use GuoJiangClub\Component\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;

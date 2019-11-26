@@ -13,8 +13,8 @@ namespace GuoJiangClub\Activity\Backend\Http\Controllers;
 
 use Carbon\Carbon;
 use DB;
-use ElementVip\Component\Payment\Models\PaymentLog;
-use ElementVip\Component\Payment\Services\RefundService;
+use GuoJiangClub\Component\Payment\Models\PaymentLog;
+use GuoJiangClub\Component\Payment\Services\RefundService;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use GuoJiangClub\Activity\Core\Models\ActivityRefundLog;

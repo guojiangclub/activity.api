@@ -5,7 +5,7 @@
         </div><!-- /.box-header -->
         <div class="hr-line-dashed"></div>
         <div class="table-responsive">
-            @if(count($coaches)>0)
+            @if($coaches && is_array($coaches))
                 <table class="table table-hover table-striped">
                     <tbody>
                     <!--tr-th start-->
