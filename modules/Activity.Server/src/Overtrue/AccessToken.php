@@ -5,9 +5,10 @@
  * Date: 2019-11-27
  * Time: 12:40
  */
-namespace GuoJiangClub\Activity\Server;
+namespace GuoJiangClub\Activity\Server\Overtrue;
 use Doctrine\Common\Cache\Cache;
 use Doctrine\Common\Cache\FilesystemCache;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class AccessToken
 {
@@ -221,7 +222,7 @@ class AccessToken
         $token = $http->parseJSON($http->get(self::API_TOKEN_GET, $params));
 
         if (empty($token[$this->tokenJsonKey])) {
-            throw new HttpException('Request AccessToken fail. response: '.json_encode($token, JSON_UNESCAPED_UNICODE));
+            throw new HttpException(500,'Request AccessToken fail. response: '.json_encode($token, JSON_UNESCAPED_UNICODE));
         }
 
         return $token;
