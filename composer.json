@@ -34,6 +34,7 @@
     "laravelcollective/html": "^5.5",
     "lavary/laravel-menu": "~1.7",
     "league/fractal": "^0.17.0",
+    "doctrine/dbal": "^2.5",
     "marktopper/doctrine-dbal-timestamp-type": "^1.0",
     "milon/barcode": "^5.3",
     "overtrue/laravel-uploader": "~0.0.7",
