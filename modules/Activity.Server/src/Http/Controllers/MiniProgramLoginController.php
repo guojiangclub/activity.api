@@ -8,12 +8,9 @@
 
 namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
-
-use ElementVip\Component\User\Models\UserBind;
-
+use GuoJiangClub\Activity\Core\Models\User;
 use GuoJiangClub\Activity\Server\Overtrue\WXBizDataCrypt;
 use iBrand\Component\User\Repository\UserBindRepository;
-use Illuminate\Auth\Events\Login;
 use RuntimeException;
 
 class MiniProgramLoginController extends Controller
@@ -186,12 +183,10 @@ class MiniProgramLoginController extends Controller
     {
         $openId = request('open_id');
         $type = 'miniprogram';
-        $app_id = settings('mini_program_app_id');
+        $app_id = settings('activity_mini_program_app_id');
 
         $app_type = request('app_type');
-        if ($app_type == 'activity') {
-            $app_id = settings('activity_mini_program_app_id');
-        }
+
 
         if (empty($openId) OR empty($type)) {
             return;
