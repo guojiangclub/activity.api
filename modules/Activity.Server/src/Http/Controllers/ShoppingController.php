@@ -13,23 +13,17 @@ namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
 use Carbon\Carbon;
 use DB;
-use GuoJiangClub\Component\Discount\Applicators\DiscountApplicator;
-use GuoJiangClub\Component\Order\Models\Order;
-use GuoJiangClub\Component\Order\Processor\OrderProcessor;
-use GuoJiangClub\Component\Order\Repositories\OrderRepository;
-use GuoJiangClub\Component\Point\Repository\PointRepository;
-use GuoJiangClub\Component\User\Models\User;
-use GuoJiangClub\Notifications\PointRecord;
-use GuoJiangClub\Activity\Core\Models\Activity;
+use iBrand\Component\Discount\Applicators\DiscountApplicator;
+use iBrand\Component\Point\Repository\PointRepository;
 use GuoJiangClub\Activity\Core\Models\Answer;
 use GuoJiangClub\Activity\Core\Models\Discount\Coupon;
 use GuoJiangClub\Activity\Core\Models\Member;
 use GuoJiangClub\Activity\Core\Models\Payment;
-use GuoJiangClub\Activity\Core\Notifications\Join;
+
 use GuoJiangClub\Activity\Core\Repository\ActivityRepository;
 use GuoJiangClub\Activity\Core\Repository\MemberRepository;
 use GuoJiangClub\Activity\Core\Repository\PaymentRepository;
-use GuoJiangClub\Activity\Core\Services\DiscountService;
+use GuoJiangClub\Activity\Core\Discount\Services\DiscountService;
 use GuoJiangClub\Activity\Server\Services\ActivityService;
 use Illuminate\Events\Dispatcher;
 
@@ -42,8 +36,6 @@ class ShoppingController extends Controller
     protected $member;
     protected $payment;
     protected $activityService;
-    protected $orderProcessor;
-    protected $orderRepository;
 
     public function __construct(
         ActivityRepository $activityRepository,
@@ -53,9 +45,7 @@ class ShoppingController extends Controller
         MemberRepository $memberRepository,
         PaymentRepository $paymentRepository,
         Dispatcher $event,
-        ActivityService $activityService,
-        OrderProcessor $orderProcessor,
-        OrderRepository $orderRepository)
+        ActivityService $activityService)
     {
         $this->activity = $activityRepository;
         $this->pointRepository = $pointRepository;
@@ -65,8 +55,6 @@ class ShoppingController extends Controller
         $this->payment = $paymentRepository;
         $this->event = $event;
         $this->activityService = $activityService;
-        $this->orderProcessor = $orderProcessor;
-        $this->orderRepository = $orderRepository;
     }
 
     public function checkout()
@@ -350,7 +338,7 @@ class ShoppingController extends Controller
      */
     private function getCheckOutFromPointCharge($activity, $order_no, $user, $payment, $total)
     {
-        $point = $this->pointRepository->getSumPointValid($user->id, 'default');
+        $point = $this->pointRepository->getSumPointValid($user->id);
 
         if ($payment->point > $point) {
             throw new \Exception('积分不够');
@@ -381,15 +369,6 @@ class ShoppingController extends Controller
 
             event('point.change', $user->id);
 
-            $user->notify(new PointRecord(['point' => [
-                'user_id' => $user->id,
-                'action' => 'activity',
-                'note' => '活动报名',
-                'value' => (-1) * $payment->point,
-                'valid_time' => 0,
-                'item_type' => Payment::class,
-                'item_id' => $payment->id,
-            ]]));
 
             $activity->update(['member_count' => $activity->member_count + 1]);
             if ($payment->limit > 0 && 1 == $payment->is_limit) {
@@ -466,7 +445,7 @@ class ShoppingController extends Controller
      */
     private function getCheckOutFromBlendCharge($activity, $order_no, $user, $payment, $total)
     {
-        $point = $this->pointRepository->getSumPointValid($user->id, 'default');
+        $point = $this->pointRepository->getSumPointValid($user->id);
 
         if ($payment->point > $point) {
             throw new \Exception('积分不够');
