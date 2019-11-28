@@ -6,10 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Favorite extends Model
 {
-
-    protected $table = 'el_favorites';
-
     protected $guarded = ['id'];
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $prefix = config('ibrand.app.database.prefix', 'ibrand_');
+
+        $this->setTable($prefix . 'favorites');
+    }
+
+
 
     public function favoriteable()
     {
