@@ -12,7 +12,6 @@
 namespace GuoJiangClub\Activity\Core\Models;
 
 use GuoJiangClub\Component\Favorite\Models\Favorite;
-use GuoJiangClub\Component\User\Models\User;
 
 class Like extends Favorite
 {

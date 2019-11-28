@@ -189,6 +189,7 @@ return [
 
         iBrand\Common\CommonServiceProvider::class,
         iBrand\UEditor\UEditorServiceProvider::class,
+        \GuoJiangClub\Component\Favorite\Providers\FavoriteServiceProvider::class,
         GuoJiangClub\Activity\Core\Providers\ActivityServiceProvider::class,
         GuoJiangClub\Activity\Server\Providers\ServerServiceProvider::class,
         GuoJiangClub\Activity\Backend\Providers\ActivityAdminProvider::class,
