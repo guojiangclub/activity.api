@@ -41,7 +41,7 @@
 
                     <div class="col-sm-10">
                         <input type="text" class="form-control"
-                               value="{{settings('activity_mini_app_id') ? settings('activity_mini_app_id') : ''}}" name="activity_mini_app_id" placeholder="">
+                               value="{{settings('activity_mini_program_app_id') ? settings('activity_mini_program_app_id') : ''}}" name="activity_mini_program_app_id" placeholder="">
 
                     </div>
                 </div>
@@ -51,32 +51,14 @@
 
                     <div class="col-sm-10">
                         <input type="text" class="form-control"
-                               value="{{settings('activity_mini_app_secret') ? settings('activity_mini_app_secret') : ''}}" name="activity_mini_app_secret" placeholder="">
+                               value="{{settings('activity_mini_program_secret') ? settings('activity_mini_program_secret') : ''}}" name="activity_mini_program_secret" placeholder="">
 
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">mobile_domain：</label>
 
-                    <div class="col-sm-10">
-                            <input type="text" class="form-control"
-                                   value="{{settings('mobile_domain') ? settings('mobile_domain') : ''}}"
-                                   name="mobile_domain" placeholder="">
 
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">mobile_activity_domain：</label>
-
-                    <div class="col-sm-10">
-                            <input type="text" class="form-control" value="{{settings('mobile_activity_domain') ? settings('mobile_activity_domain') : ''}}" name="mobile_activity_domain" placeholder="">
-
-                    </div>
-                </div>
-
-                <div class="form-group">
+                {{--<div class="form-group">
                     <label class="col-sm-2 control-label">短信模板id：</label>
 
                     <div class="col-sm-10">
@@ -162,7 +144,7 @@
                                value="{{settings('activity_coupon_code_sign') ? settings('activity_coupon_code_sign') : ''}}"
                                name="activity_coupon_code_sign" placeholder="">
                     </div>
-                </div>
+                </div>--}}
 
                 <div class="hr-line-dashed"></div>
                 <div class="form-group">
