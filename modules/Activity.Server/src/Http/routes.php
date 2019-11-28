@@ -8,6 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+$router->post('oauth/MiniProgramLogin', 'MiniProgramLoginController@login')->name('api.oauth.miniprogram.login');
+$router->post('oauth/MiniProgramMobileLogin', 'MiniProgramLoginController@MiniProgramMobileLogin')->name('api.oauth.MiniProgramMobileLogin');
+
 
 $router->group(['prefix' => 'activity'], function () use ($router) {
     $router->get('list/{id}', 'ActivityController@index')->name('api.act.list');
