@@ -24,6 +24,7 @@
     "ibrand/point": "~1.0",
     "ibrand/setting": "^1.1",
     "ibrand/user": "~1.0",
+    "ibrand/vip": "^1.0",
     "intervention/image": "^2.3",
     "jenssegers/agent": "^2.4",
     "kalnoy/nestedset": "^4.1",

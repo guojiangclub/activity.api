@@ -34,3 +34,22 @@ $router->group(['prefix' => 'admin/member'], function () use ($router) {
     });
 
 });
+
+//SVIP管理
+$router->group(['prefix' => 'admin/member/svip'], function () use ($router) {
+    $router->get("settings", "SvipController@settings")->name('admin.svip.settings');
+
+    $router->group(['prefix' => 'plan'], function () use ($router) {
+        $router->get("list", "SvipController@index")->name('admin.svip.plan.list');
+        $router->get("create", "SvipController@create")->name('admin.svip.plan.create');
+        $router->get("{id}/edit", "SvipController@edit")->name('admin.svip.plan.edit');
+        $router->post("store", "SvipController@store")->name('admin.svip.plan.store');
+    });
+
+    $router->group(['prefix' => 'member'], function () use ($router) {
+        $router->get("list", "SvipMemberController@index")->name('admin.svip.member.list');
+        $router->get("getExportData", "SvipMemberController@getExportData")->name('admin.svip.member.getExportData');
+
+    });
+
+});

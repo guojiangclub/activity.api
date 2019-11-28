@@ -33,6 +33,9 @@ $router->group(['prefix' => 'category'], function () use ($router) {
 $router->post('activity/wechat/notify', 'WechatPayNotifyController@notify');
 
 $router->group(config('dmp-api.routeAuthAttributes'), function ($router) {
+    $router->get('/me', 'UserController@me')->name('api.me');
+    $router->get('user/bindUserMiniInfo', 'UserController@bindUserMiniInfo')->name('api.user.bindUserMiniInfo');
+
     $router->group(['prefix' => 'activity'], function () use ($router) {
         $router->post('bind/activity-wx', 'AuthController@bindActivityWx')->name('api.act.bindWx');
 
