@@ -14,10 +14,11 @@ namespace GuoJiangClub\Activity\Core\Models;
 use GuoJiangClub\Activity\Core\Models\Traits\EntrustUserTrait;
 use iBrand\Component\Point\Models\Point;
 use iBrand\Component\User\Models\User as BaseUser;
+use Laravel\Passport\HasApiTokens;
 
 class User extends BaseUser
 {
-    use EntrustUserTrait;
+    use EntrustUserTrait, HasApiTokens;
 
     public function attr()
     {

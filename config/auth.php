@@ -42,7 +42,7 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'passport',
             'provider' => 'users',
         ],
     ],
@@ -70,9 +70,10 @@ return [
             'provider' => 'users',
         ],
 
-        'api' => [
-            'driver' => 'passport',
-            'provider' => 'users',
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => \GuoJiangClub\Activity\Core\Models\User::class,
+            'table' => config('ibrand.app.database.prefix', 'ibrand_').'user',
         ],
     ],
 
@@ -95,7 +96,7 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => \GuoJiangClub\Activity\Core\Models\User::class,
-            'table' => config('ibrand.app.database.prefix', 'ibrand_').'user',
+            'table' => config('ibrand.app.database.prefix', 'ibrand_') . 'user',
         ]
     ],
 
