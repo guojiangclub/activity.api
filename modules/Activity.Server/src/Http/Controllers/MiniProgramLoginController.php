@@ -116,8 +116,6 @@ class MiniProgramLoginController extends Controller
             if (!$user = $model::where('mobile', $mobile)->first()) {
                 $user = $model::create([
                     'mobile' => $mobile
-                    , 'card_limit' => date('Y-m-d', time())
-                    , 'group_id' => 1
                 ]);
                 $is_new = true;
             }
