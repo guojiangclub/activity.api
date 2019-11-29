@@ -12,8 +12,7 @@
 namespace GuoJiangClub\Activity\Core\Models;
 
 use iBrand\Component\Discount\Contracts\DiscountSubjectContract;
-use GuoJiangClub\Component\Order\Models\Order;
-use GuoJiangClub\Component\Point\Model\Point;
+use iBrand\Component\Point\Models\Point;
 use iBrand\Component\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -178,9 +177,5 @@ class Member extends Model implements DiscountSubjectContract
     {
         // TODO: Implement isPaid() method.
     }
-
-    public function shopOrder()
-    {
-        return $this->belongsToMany(Order::class, 'ac_activity_orders', 'member_id', 'order_id');
-    }
+    
 }
