@@ -202,4 +202,33 @@ class MiniProgramLoginController extends Controller
 
         $this->bindUserInfo($userId, request('userInfo'));
     }
+
+    /**
+     * 小程序code获取open_id
+     */
+    public function getOpenIdByCode()
+    {
+        $type = request('type');
+
+        $app_id = settings('activity_mini_program_app_id');
+        $secret = settings('activity_mini_program_secret');
+
+        $code = request('code');
+        if (empty($app_id) OR empty($secret)) {
+            return $this->response()->errorBadRequest('Please configure mini_program_app_id and mini_program_secret');
+        }
+        if (empty($code)) return $this->api([], false, 403, '缺失code');
+        $params = [
+            'appid' => $app_id,
+            'secret' => $secret,
+            'js_code' => $code,
+            'grant_type' => 'authorization_code'
+        ];
+        $res = $this->Curl(self::CODE_URL, self::GET, $params);
+
+        if (!isset($res['openid'])) return $this->api([], false, 403, '获取open_id失败');
+
+        return $this->api(['openid' => $res['openid']], true, 200, '');
+
+    }
 }
