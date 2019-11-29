@@ -7,9 +7,6 @@ use GuoJiangClub\Component\Balance\Model\Balance;
 use GuoJiangClub\Component\Balance\Model\BalanceOrder;
 use GuoJiangClub\Component\User\Models\User;
 use GuoJiangClub\Component\User\Models\UserBind;
-use GuoJiangClub\Component\Order\Models\Order;
-use GuoJiangClub\Component\Order\Processor\OrderProcessor;
-use GuoJiangClub\Component\Order\Repositories\OrderRepository;
 use GuoJiangClub\Component\Payment\Models\Payment;
 use GuoJiangClub\Notifications\ChargeSuccess;
 use GuoJiangClub\Activity\Core\Repository\MemberRepository;
@@ -33,16 +30,11 @@ class PayService
     private $pointRepository;
 
     public function __construct(
-        OrderRepository $orderRepository
-        , OrderProcessor $orderProcessor
         , MemberRepository $memberRepository
         , PaymentRepository $paymentRepository
         , PointRepository $pointRepository
     )
     {
-        $this->orderRepository = $orderRepository;
-        $this->orderProcessor = $orderProcessor;
-
         $this->member = $memberRepository;
         $this->paymentRepository = $paymentRepository;
         $this->pointRepository = $pointRepository;

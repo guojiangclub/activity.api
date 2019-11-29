@@ -3,12 +3,7 @@
 namespace GuoJiangClub\Component\Payment\Services;
 
 use Carbon\Carbon;
-use GuoJiangClub\Component\Balance\Model\Balance;
-use GuoJiangClub\Component\Balance\Model\BalanceOrder;
-use GuoJiangClub\Component\User\Models\User;
-use GuoJiangClub\Component\Order\Models\Order;
-use GuoJiangClub\Component\Order\Processor\OrderProcessor;
-use GuoJiangClub\Component\Order\Repositories\OrderRepository;
+use GuoJiangClub\Activity\Core\Models\User;
 use GuoJiangClub\Component\Payment\Models\Payment;
 use GuoJiangClub\Notifications\ChargeSuccess;
 use Pingpp\Charge;
