@@ -16,7 +16,7 @@ use GuoJiangClub\Component\Order\Models\Order;
 use GuoJiangClub\Component\Payment\Contracts\PaymentChargeContract;
 use GuoJiangClub\Component\Payment\Models\Payment;
 use GuoJiangClub\Component\Payment\Services\ActivityPaymentService;
-use GuoJiangClub\Component\Point\Repository\PointRepository;
+use iBrand\Component\Point\Repository\PointRepository;
 use GuoJiangClub\Activity\Core\Models\Member;
 use GuoJiangClub\Activity\Core\Repository\ActivityRepository;
 use GuoJiangClub\Activity\Core\Repository\MemberRepository;

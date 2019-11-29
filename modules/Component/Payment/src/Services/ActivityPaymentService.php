@@ -13,7 +13,7 @@ use GuoJiangClub\Component\Payment\Contracts\PaymentChargeContract;
 use GuoJiangClub\Notifications\PointRecord;
 use GuoJiangClub\Component\User\Models\User;
 use GuoJiangClub\Activity\Core\Repository\PaymentRepository;
-use GuoJiangClub\Component\Point\Repository\PointRepository;
+use iBrand\Component\Point\Repository\PointRepository;
 use GuoJiangClub\Component\Payment\Models\Payment;
 use Pingpp\Charge;
 use Pingpp\Pingpp;

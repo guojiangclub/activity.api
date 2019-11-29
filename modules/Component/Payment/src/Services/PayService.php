@@ -17,7 +17,7 @@ use GuoJiangClub\Activity\Core\Models\PaymentDetail;
 use GuoJiangClub\Activity\Core\Models\Member;
 use GuoJiangClub\Activity\Core\Models\Activity;
 use GuoJiangClub\Activity\Core\Repository\PaymentRepository;
-use GuoJiangClub\Component\Point\Repository\PointRepository;
+use iBrand\Component\Point\Repository\PointRepository;
 use Yansongda\Pay\Pay;
 use Yansongda\Pay\Log;
 use Route;
