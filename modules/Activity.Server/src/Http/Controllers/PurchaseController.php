@@ -21,6 +21,7 @@ use GuoJiangClub\Activity\Core\Models\Discount\Coupon;
 use GuoJiangClub\Activity\Core\Models\Member;
 use GuoJiangClub\Activity\Core\Models\Payment;
 use GuoJiangClub\Activity\Core\Models\Refund;
+use GuoJiangClub\Activity\Core\Models\User;
 use GuoJiangClub\Activity\Core\Repository\ActivityRepository;
 use GuoJiangClub\Activity\Core\Repository\MemberRepository;
 use GuoJiangClub\Activity\Core\Repository\PaymentRepository;
@@ -437,7 +438,7 @@ class PurchaseController extends Controller
     public function cancelHandle($activity, $member, $user_id)
     {
         $order = $this->member->with('payment')->findWhere(['order_no' => $member->order_no])->first();
-        if (!$order->order_no || count($order) <= 0) {
+        if (!$order) {
             \Log::info('订单不存在');
 
             return false;
