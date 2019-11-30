@@ -199,8 +199,6 @@ class ShoppingController extends Controller
                 event('on.member.activity.status.change', [$user->id, $activity, 'act_join']);
             }
 
-            event('activity.agent.relation', [$activity, $user->id]);
-
             return $this->api([
                 'order_no' => $activity_order_no,
                 'user_id' => $user->id,
