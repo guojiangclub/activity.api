@@ -10,7 +10,7 @@
  */
 $router->post('oauth/MiniProgramLogin', 'MiniProgramLoginController@login')->name('api.oauth.miniprogram.login');
 $router->post('oauth/MiniProgramMobileLogin', 'MiniProgramLoginController@MiniProgramMobileLogin')->name('api.oauth.MiniProgramMobileLogin');
-
+$router->get('wx_lite/open_id', 'MiniProgramLoginController@getOpenIdByCode');
 
 $router->group(['prefix' => 'activity'], function () use ($router) {
     $router->get('list/{id}', 'ActivityController@index')->name('api.act.list');

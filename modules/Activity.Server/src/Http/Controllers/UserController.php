@@ -9,14 +9,14 @@
 namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
 use Carbon\Carbon;
-use ElementVip\Component\Address\Models\Address;
+
 use ElementVip\Component\Balance\Model\Balance;
 use ElementVip\Component\Balance\Repository\BalanceRepository;
 use ElementVip\Component\Discount\Repositories\CouponRepository;
 use ElementVip\Component\Favorite\Models\Favorite;
 use ElementVip\Component\Marketing\Repositories\SignItemRepository;
 use ElementVip\Component\Order\Models\Order;
-use ElementVip\Component\Order\Repositories\OrderRepository;
+
 use ElementVip\Component\Point\Repository\PointRepository;
 use ElementVip\Component\Refund\Models\Refund;
 use ElementVip\Component\User\Models\User;
