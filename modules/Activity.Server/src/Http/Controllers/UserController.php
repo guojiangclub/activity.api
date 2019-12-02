@@ -79,9 +79,7 @@ class UserController extends Controller
             $user->size()->create($size_input);
         }
 
-        event('complete_info', [$user, 'complete_info']);
 
-        // return $this->response()->item($user, new UserTransformer());
         return response()->json([
             'status' => true,
             'message' => "修改成功",
