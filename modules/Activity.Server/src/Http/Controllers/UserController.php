@@ -8,6 +8,7 @@
 
 namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
+use GuoJiangClub\Activity\Core\Models\User;
 use GuoJiangClub\Activity\Server\Overtrue\WXBizDataCrypt;
 use GuoJiangClub\Activity\Server\Transformers\UserTransformer;
 use iBrand\Component\Vip\Repositories\VipMemberRepository;
@@ -51,7 +52,7 @@ class UserController extends Controller
     public function updateInfo()
     {
         $user = request()->user();
-        $data = array_filter(request()->only(['name', 'nick_name', 'sex', 'birthday', 'city', 'education', 'qq', 'avatar', 'email', 'password']));
+        $data = array_filter(request()->only(['name', 'nick_name', 'sex', 'birthday', 'city', 'education', 'avatar', 'email', 'password']));
         $size_input = request('size') ?: [];
         $size_input = array_filter(array_only($size_input, ['upper', 'lower', 'shoes']));
 
