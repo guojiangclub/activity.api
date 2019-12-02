@@ -3,18 +3,14 @@
 namespace GuoJiangClub\Component\Payment\Services;
 
 use Carbon\Carbon;
-use GuoJiangClub\Activity\Core\Models\ActivityOrders;
 use GuoJiangClub\Activity\Core\Repository\MemberRepository;
 use GuoJiangClub\Activity\Core\Models\PaymentDetail;
-use GuoJiangClub\Activity\Core\Models\Member;
 use GuoJiangClub\Activity\Core\Models\Activity;
-use GuoJiangClub\Component\Order\Models\Order;
 use GuoJiangClub\Component\Payment\Contracts\PaymentChargeContract;
-use GuoJiangClub\Notifications\PointRecord;
-use GuoJiangClub\Component\User\Models\User;
 use GuoJiangClub\Activity\Core\Repository\PaymentRepository;
 use iBrand\Component\Point\Repository\PointRepository;
 use GuoJiangClub\Component\Payment\Models\Payment;
+use iBrand\Component\User\Models\User;
 use Pingpp\Charge;
 use Pingpp\Pingpp;
 
@@ -29,7 +25,6 @@ class ActivityPaymentService
     public function __construct(MemberRepository $memberRepository,
                                 PaymentRepository $paymentRepository,
                                 PointRepository $pointRepository,
-                                PaymentService $paymentService,
                                 PaymentChargeContract $paymentChargeContract)
     {
         $this->member = $memberRepository;
@@ -80,38 +75,16 @@ class ActivityPaymentService
                     'item_id' => $payment->id,
                 ]);
                 event('point.change', $user->id);
-                $user->notify(new PointRecord(['point' => [
-                    'user_id' => $user->id,
-                    'action' => 'activity',
-                    'note' => '活动报名',
-                    'value' => $payment->point,
-                    'valid_time' => 0,
-                    'item_type' => Payment::class,
-                    'item_id' => $payment->id,
-                ]]));
             }
 
-            /*if ($payment->type == 1 || $payment->type == 2) {*/
+
             $activity->update(['member_count' => $activity->member_count + 1]);
             if ($payment->limit > 0 && $payment->is_limit == 1) {
                 $payment->update(['limit' => $payment->limit - 1]);
             }
-            /*}*/
 
             event('on.member.activity.status.change', [$user->id, $activity, 'act_join']);
 
-            if ($orderRelation = ActivityOrders::where('member_id', $order->id)->get()->last()) {
-                $shopOrder = Order::find($orderRelation->order_id);               
-                $this->pay->createPaymentLog('result_pay', Carbon::createFromTimestamp($charge['time_paid']), $shopOrder->order_no, $charge['id'], $charge['transaction_no'], $charge['amount'], $charge['channel'], 'order', 'SUCCESS', $user->id, $charge);
-                
-                $shopOrder->type = Order::TYPE_ACTIVITY;
-                $shopOrder->save();
-                
-                $charge['metadata']['order_sn'] = $shopOrder->order_no;
-                $charge['metadata']['type'] = 'order';
-                $charge['amount'] = $shopOrder->total;
-                $this->paymentService->paySuccess($charge);
-            }
         }
     }
 
