@@ -22,34 +22,15 @@ class UserController extends Controller
 {
 
     private $user;
-
-    private $point;
-    private $balance;
-    private $bankAccount;
-    private $card;
-    private $order;
     protected $couponRepository;
     protected $vipMemberRepository;
     protected $signItemRepository;
 
-    public function __construct(UserRepository $userRepository
-        , PointRepository $pointRepository
-        , BalanceRepository $balance
-        , BankAccountRepository $bankAccount
-        , OrderRepository $orderRepository
-        , CouponRepository $couponRepository
-        , VipMemberRepository $vipMemberRepository
-        , SignItemRepository $signItemRepository)
+    public function __construct(
+        VipMemberRepository $vipMemberRepository
+    )
     {
-        $this->user = $userRepository;
-        $this->point = $pointRepository;
-        $this->balance = $balance;
-        $this->bankAccount = $bankAccount;
-        $this->order = $orderRepository;
-        $this->couponRepository = $couponRepository;
         $this->vipMemberRepository = $vipMemberRepository;
-        $this->signItemRepository = $signItemRepository;
-        /*$this->card = $cardRepository;*/
     }
 
     public function me()
@@ -206,9 +187,6 @@ class UserController extends Controller
     }
 
 
-
-
-
     private function generaterandomstring($length = 10)
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -220,7 +198,6 @@ class UserController extends Controller
 
         return $randomString;
     }
-
 
 
     /**
