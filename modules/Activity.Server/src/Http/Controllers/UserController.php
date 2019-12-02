@@ -22,14 +22,9 @@ use EasyWeChat;
 class UserController extends Controller
 {
 
-    private $user;
-    protected $couponRepository;
     protected $vipMemberRepository;
-    protected $signItemRepository;
 
-    public function __construct(
-        VipMemberRepository $vipMemberRepository
-    )
+    public function __construct(VipMemberRepository $vipMemberRepository)
     {
         $this->vipMemberRepository = $vipMemberRepository;
     }
@@ -176,11 +171,12 @@ class UserController extends Controller
 
         $user = $request->user();
 
-        if ($existUser = $this->user->findWhere(['mobile' => request('mobile')])->first()) {
+        if ($existUser = User::where('mobile', request('mobile'))->first()) {
             return $this->api(null, false, 400, '此手机号已绑定账号');
         }
 
-        $user = $this->user->update(['mobile' => $request->input('mobile')], $user->id);
+        $user->mobile = \request('mobile');
+        $user->save();
 
         return $this->response()->item($user, new UserTransformer());
     }
