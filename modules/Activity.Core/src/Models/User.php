@@ -40,4 +40,9 @@ class User extends BaseUser
     {
         return $this->hasMany(Point::class);
     }
+
+    public function size()
+    {
+        return $this->hasOne(UserSize::class);
+    }
 }
