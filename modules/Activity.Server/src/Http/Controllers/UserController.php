@@ -8,39 +8,15 @@
 
 namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
-use Carbon\Carbon;
-
-use ElementVip\Component\Balance\Model\Balance;
-use ElementVip\Component\Balance\Repository\BalanceRepository;
-use ElementVip\Component\Discount\Repositories\CouponRepository;
-use ElementVip\Component\Favorite\Models\Favorite;
-use ElementVip\Component\Marketing\Repositories\SignItemRepository;
-use ElementVip\Component\Order\Models\Order;
-
-use ElementVip\Component\Point\Repository\PointRepository;
-use ElementVip\Component\Refund\Models\Refund;
-use ElementVip\Component\User\Models\User;
-use ElementVip\Distribution\Core\Models\Agent;
-use ElementVip\Server\Exception\UserExistsException;
-use ElementVip\Server\Transformers\BankAccountTransformer;
-use ElementVip\Server\Transformers\BalanceTransformer;
-use ElementVip\Server\Transformers\GroupTransformer;
-use ElementVip\Server\Transformers\PointTransformer;
-
-use ElementVip\Store\Backend\Model\UtoUserCenter;
-use ElementVip\Wechat\Server\Wx\WXBizDataCrypt;
+use GuoJiangClub\Activity\Server\Overtrue\WXBizDataCrypt;
 use GuoJiangClub\Activity\Server\Transformers\UserTransformer;
 use iBrand\Component\Vip\Repositories\VipMemberRepository;
 use Illuminate\Http\Request;
-use ElementVip\Component\User\Repository\UserRepository;
-use ElementVip\Component\Card\Repository\CardRepository;
 use Validator;
 use Image;
-use ElementVip\Component\BankAccount\Model\BankInfo;
-use ElementVip\Component\BankAccount\Repository\BankAccountRepository;
 use iBrand\Sms\Facade as Sms;
 use EasyWeChat;
-use App\Http\Controllers\Controller;
+
 
 class UserController extends Controller
 {
@@ -57,7 +33,6 @@ class UserController extends Controller
     protected $signItemRepository;
 
     public function __construct(UserRepository $userRepository
-        /*, CardRepository $cardRepository*/
         , PointRepository $pointRepository
         , BalanceRepository $balance
         , BankAccountRepository $bankAccount
@@ -214,14 +189,6 @@ class UserController extends Controller
 
     public function updateMobile(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'mobile' => 'required|confirm_mobile_not_change|confirm_rule:mobile_required',
-            'code' => 'required|verify_code',
-        ]);
-
-        /*if ($validator->fails()) {
-            return $this->api(null, false, 400,'验证码错误');
-        };*/
 
         if (!Sms::checkCode(\request('mobile'), \request('code'))) {
             return $this->api(null, false, 400, '验证码错误');
@@ -232,12 +199,8 @@ class UserController extends Controller
         if ($existUser = $this->user->findWhere(['mobile' => request('mobile')])->first()) {
             return $this->api(null, false, 400, '此手机号已绑定账号');
         }
-        // $card = $user->card;
-        // $card = $this->card->update(['mobile' => $request->input('mobile')], $card->id);
-        $user = $this->user->update(['mobile' => $request->input('mobile')], $user->id);
 
-        event('user.update.mobile', [$user]);
-        event('verify_mobile', $user);
+        $user = $this->user->update(['mobile' => $request->input('mobile')], $user->id);
 
         return $this->response()->item($user, new UserTransformer());
     }
@@ -339,7 +302,6 @@ class UserController extends Controller
 
     public function bindUserMiniInfo()
     {
-
         $type = request('app_type');
         $config = [
             'app_id' => settings('activity_mini_program_app_id'),
