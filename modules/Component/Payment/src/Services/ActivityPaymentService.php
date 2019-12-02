@@ -11,15 +11,12 @@ use GuoJiangClub\Activity\Core\Repository\PaymentRepository;
 use iBrand\Component\Point\Repository\PointRepository;
 use GuoJiangClub\Component\Payment\Models\Payment;
 use iBrand\Component\User\Models\User;
-use Pingpp\Charge;
-use Pingpp\Pingpp;
 
 class ActivityPaymentService
 {
     private $member;
     private $paymentRepository;
     private $pointRepository;
-    private $paymentService;
     private $pay;
 
     public function __construct(MemberRepository $memberRepository,
@@ -30,7 +27,6 @@ class ActivityPaymentService
         $this->member = $memberRepository;
         $this->paymentRepository = $paymentRepository;
         $this->pointRepository = $pointRepository;
-        $this->paymentService = $paymentService;
         $this->pay = $paymentChargeContract;
     }
 
@@ -88,51 +84,6 @@ class ActivityPaymentService
         }
     }
 
-    /**
-     * 创建charge数据，与pingpp集成对接
-     *
-     * @param        $user_id
-     * @param        $channel
-     * @param string $type
-     * @param        $order_no
-     * @param        $amount
-     * @param        $subject
-     * @param        $body
-     * @param string $ip
-     *
-     * @return Charge
-     */
-    public function createCharge($user_id, $channel, $type = 'order', $order_no, $amount, $subject, $body, $ip = '127.0.0.1', $openid = '', $extra = [])
-    {
-        Pingpp::setApiKey($this->getApiKey());
-        $this->setPrivateKey();
-
-        $extra = $this->createExtra($channel, $openid, $extra);
-
-        $delayTime = app('system_setting')->getSetting('order_auto_cancel_time') ? app('system_setting')->getSetting('order_auto_cancel_time') : 1440;
-
-        if (in_array($channel, ['wx_pub', 'wx_pub_qr'])) {
-            $delayTime = 120;
-        }
-
-        $chargeData = [
-            'app' => ['id' => $this->getPingAppId()],
-            'channel' => $channel,
-            'currency' => 'cny',
-            'amount' => $amount, //因为pingpp 是以分为单位
-            'client_ip' => $ip,
-            'order_no' => $this->getWxPayCode($order_no, $channel),
-            'subject' => mb_strcut($subject, 0, 32, 'UTF-8'),
-            'body' => mb_strcut($body, 0, 32, 'UTF-8'),
-            'extra' => $extra,
-            'metadata' => ['user_id' => $user_id, 'order_sn' => $order_no, 'charge_type' => 'activity_pay'],
-            'time_expire' => Carbon::now()->addMinute($delayTime)->timestamp,
-        ];
-
-        $charge = Charge::create($chargeData);
-
-        return $charge;
-    }
 
     /**
      * 根据充值渠道生成extra参数
