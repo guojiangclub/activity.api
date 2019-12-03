@@ -2,7 +2,6 @@
 
 namespace GuoJiangClub\Member\Backend\Repository;
 
-use GuoJiangClub\Store\Backend\Exceptions\GeneralException;
 use iBrand\Common\Exceptions\Exception;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -68,26 +67,6 @@ class UserRepository extends BaseRepository
     }
 
 
-    public function createUser($input, $roles)
-    {
-        $user = new User;
-        $user->name = $input['name'];
-        $user->email = $input['email'];
-        $user->password = $input['password'];
-        $user->mobile = $input['mobile'];
-        $user->status = isset($input['status']) ? 1 : 0;
-        $user->confirmation_code = md5(uniqid(mt_rand(), true));
-        $user->confirmed = isset($input['confirmed']) ? 1 : 0;
-        if ($user->save()) {
-//            if (!empty($roles))
-//                $user->attachRoles($roles['assignees_roles']);
-
-            return true;
-        }
-
-        throw new GeneralException('There was a problem creating this user. Please try again.');
-    }
-
     /**
      * @param $id
      * @param $status
@@ -131,83 +110,6 @@ class UserRepository extends BaseRepository
         })->paginate($limit);
     }
 
-    /**
-     * @param $id
-     * @param $input
-     * @param $roles
-     * @return bool
-     * @throws GeneralException
-     */
-    public function updateUser($id, $input, $roles)
-    {
-        $user = $this->findOrThrowException($id);
-        $this->checkUserByEmail($input, $user);
-
-        if ($user->update($input)) {
-            $user->status = isset($input['status']) ? 1 : 0;
-            $user->confirmed = isset($input['confirmed']) ? 1 : 0;
-            $user->save();
-//            $user->roles()->sync($roles['assignees_roles']);
-            return true;
-        }
-
-        throw new GeneralException('There was a problem updating this user. Please try again.');
-    }
-
-    /**
-     * @param $input
-     * @param $user
-     * @throws GeneralException
-     */
-    private function checkUserByEmail($input, $user)
-    {
-        if (isset($input['email']) AND $user->email != $input['email']) {
-            if (User::where('email', '=', $input['email'])->first())
-                throw new GeneralException('系统已经存在此邮箱');
-        }
-    }
-
-    /**
-     * @param $id
-     * @param $input
-     * @return bool
-     * @throws GeneralException
-     */
-    public function updatePassword($id, $input)
-    {
-        $user = $this->findOrThrowException($id);
-
-        $user->password = $input['password'];
-        if ($user->save())
-            return true;
-
-        throw new GeneralException('修改密码失败，请重试！');
-    }
-
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function destroy($id)
-    {
-        if (auth()->id() == $id)
-            throw new GeneralException("不能删除自己的账号");
-
-        $user = $this->findOrThrowException($id);
-        if ($user->delete())
-            return true;
-
-        throw new GeneralException("删除账号失败，请重试!");
-    }
-
-    public function resendConfirmationEmail($id)
-    {
-        $user = User::findOrFail($id);
-
-        return Mail::send('emails.confirm', ['token' => $user->confirmation_code], function ($message) use ($user) {
-            $message->to($user->email, $user->name)->subject(app_name() . ': 请激活你的邮箱账号!');
-        });
-    }
 
     /**
      * 添加用户积分，积分可以为负数，负数则为消费
@@ -232,17 +134,6 @@ class UserRepository extends BaseRepository
         return $user;
     }
 
-    /**
-     * 更新用户登录信息
-     * @param $user
-     * @return mixed
-     */
-    public function updateUserLogin($user)
-    {
-        $user->last_login = Carbon::now();
-        $user->login_times += 1;
-        $user->save();
-    }
 
 
     /**

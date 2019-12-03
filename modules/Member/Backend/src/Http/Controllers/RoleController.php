@@ -22,11 +22,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Validator;
 use iBrand\Backend\Http\Controllers\Controller;
+use GuoJiangClub\Member\Backend\Repository\UserRepository;
 
 class RoleController extends Controller
 {
     protected $role;
-    protected $permission;
     protected $userRepository;
 
     /**
@@ -34,9 +34,11 @@ class RoleController extends Controller
      *
      * @param $role
      */
-    public function __construct(Role $role)
+    public function __construct(Role $role,
+                                UserRepository $userRepository)
     {
         $this->role = $role;
+        $this->userRepository = $userRepository;
     }
 
     public function index()
@@ -44,11 +46,11 @@ class RoleController extends Controller
         $models = $this->role->paginate(15);
         $users = $this->UsersSearch();
 
-        return LaravelAdmin::content(function (Content $content) use ($models,$users) {
+        return LaravelAdmin::content(function (Content $content) use ($models, $users) {
             $content->header('角色管理');
 
             $content->breadcrumb(
-                ['text' => '角色管理', 'url' => 'member/RoleManagement/role/index','no-pjax' => 1,'left-menu-active'=>'角色管理']
+                ['text' => '角色管理', 'url' => 'member/RoleManagement/role/index', 'no-pjax' => 1, 'left-menu-active' => '角色管理']
             );
 
             $content->body(view('member-backend::role.roleIndex', compact('models', 'users')));
@@ -63,7 +65,7 @@ class RoleController extends Controller
         $users = $role->users()->paginate(15);
         $value = request('value');
         if ('' != request('value') && count($users) > 0) {
-            $where['mobile'] = ['like', '%'.request('value').'%'];
+            $where['mobile'] = ['like', '%' . request('value') . '%'];
             $data = $this->userRepository->scopeQuery(function ($query) use ($where) {
                 if (is_array($where)) {
                     foreach ($where as $key => $value) {
@@ -91,12 +93,12 @@ class RoleController extends Controller
             }
         }
 
-        return LaravelAdmin::content(function (Content $content) use ($users,$role,$value,$ids) {
+        return LaravelAdmin::content(function (Content $content) use ($users, $role, $value, $ids) {
             $content->header('角色用户管理');
 
             $content->breadcrumb(
                 ['text' => '角色管理', 'url' => 'member/RoleManagement/role/index', 'no-pjax' => 1],
-                ['text' => '角色用户管理', 'url' => '', 'no-pjax' => 1,'left-menu-active'=>'角色管理']
+                ['text' => '角色用户管理', 'url' => '', 'no-pjax' => 1, 'left-menu-active' => '角色管理']
             );
 
             $content->body(view('member-backend::role.role_user_list', compact('users', 'role', 'value', 'ids')));
@@ -110,7 +112,7 @@ class RoleController extends Controller
 
             $content->breadcrumb(
                 ['text' => '角色管理', 'url' => 'member/RoleManagement/role/index', 'no-pjax' => 1],
-                ['text' => '创建角色', 'url' => '', 'no-pjax' => 1,'left-menu-active'=>'角色管理']
+                ['text' => '创建角色', 'url' => '', 'no-pjax' => 1, 'left-menu-active' => '角色管理']
             );
 
             $content->body(view('member-backend::role.roleCreate'));
@@ -140,7 +142,7 @@ class RoleController extends Controller
 
             $content->breadcrumb(
                 ['text' => '角色管理', 'url' => 'member/RoleManagement/role/index', 'no-pjax' => 1],
-                ['text' => '编辑角色', 'url' => '', 'no-pjax' => 1,'left-menu-active'=>'角色管理']
+                ['text' => '编辑角色', 'url' => '', 'no-pjax' => 1, 'left-menu-active' => '角色管理']
             );
 
             $content->body(view('member-backend::role.roleEdit', compact('model')));
@@ -212,11 +214,11 @@ class RoleController extends Controller
 
         $roles = $this->role->get();
 
-        return LaravelAdmin::content(function (Content $content) use ($user,$roles) {
+        return LaravelAdmin::content(function (Content $content) use ($user, $roles) {
             $content->header('角色用户管理');
 
             $content->breadcrumb(
-                ['text' => '角色管理', 'url' => 'member/RoleManagement/role/index', 'no-pjax' => 1,'left-menu-active'=>'角色管理']
+                ['text' => '角色管理', 'url' => 'member/RoleManagement/role/index', 'no-pjax' => 1, 'left-menu-active' => '角色管理']
             );
 
             $content->body(view('member-backend::role.roleUserEdit', compact('user', 'roles')));
@@ -232,11 +234,11 @@ class RoleController extends Controller
     public function UsersSearch($where = [], $delete = false)
     {
         if (!empty(request('name'))) {
-            $where['name'] = ['like', '%'.request('name').'%'];
+            $where['name'] = ['like', '%' . request('name') . '%'];
         }
 
         if (!empty(request('email'))) {
-            $where['email'] = ['like', '%'.request('email').'%'];
+            $where['email'] = ['like', '%' . request('email') . '%'];
         }
 
         if (!empty(request('integral'))) {
@@ -244,14 +246,14 @@ class RoleController extends Controller
         }
 
         if (!empty(request('mobile'))) {
-            $where['mobile'] = ['like', '%'.request('mobile').'%'];
+            $where['mobile'] = ['like', '%' . request('mobile') . '%'];
         }
 
         if (true == $delete) {
             return $this->userRepository->getDeletedUsersPaginated($where);
         }
-return null;
-  //      return $this->userRepository->searchUserPaginated($where, 20);
+
+        return $this->userRepository->searchUserPaginated($where, 20);
     }
 
     private function validatePrivate($operation = 'create')
@@ -263,7 +265,7 @@ return null;
             ];
         } else {
             $rules = [
-                'name' => 'required |unique:'.Config::get('entrust.roles_table'),
+                'name' => 'required |unique:' . Config::get('entrust.roles_table'),
                 'display_name' => 'required',
             ];
         }
@@ -313,7 +315,7 @@ return null;
     {
         $users = $this->UsersSearch();
         $role_id = request('role_id');
-        $roles = DB::table('el_role_user')->where('role_id', $role_id)->get();
+        $roles = DB::table(Config::get('entrust.role_user_table'))->where('role_id', $role_id)->get();
         $checked = collect($roles)->pluck('user_id')->all();
 
         return ['status' => true, 'code' => 200, 'data' => $users, 'checked' => $checked,
@@ -365,18 +367,18 @@ return null;
     {
         $role_id = request('role_id');
 
-       return view('member-backend::role.includes.import-user', compact('role_id'));
+        return view('member-backend::role.includes.import-user', compact('role_id'));
 
     }
 
     public function saveImport()
     {
         $data = [];
-        $filename = 'public'.request('upload_excel');
+        $filename = 'public' . request('upload_excel');
         $role_id = request('role_id');
         $role = Role::find($role_id);
 
-        Excel::load($filename, function ($reader) use ($role_id,$role) {
+        Excel::load($filename, function ($reader) use ($role_id, $role) {
             $reader = $reader->getSheet(0);
             //获取表中的数据
             $results = $reader->toArray();
