@@ -17,6 +17,7 @@ use GuoJiangClub\Activity\Core\Models\Discount\Coupon;
 use GuoJiangClub\Activity\Core\Models\Like;
 use GuoJiangClub\Activity\Core\Models\Member;
 use GuoJiangClub\Activity\Core\Models\Payment;
+use GuoJiangClub\Activity\Core\Models\User;
 use GuoJiangClub\Activity\Core\Repository\ActivityRepository;
 use GuoJiangClub\Activity\Core\Repository\CouponRepository;
 use GuoJiangClub\Activity\Core\Repository\DiscountRepository;
@@ -223,7 +224,7 @@ class MemberController extends Controller
     {
         $limit = request('limit') ?: 15;
         $user = request()->user();
-        if (!$member = User::with('group')->find($id)) {
+        if (!$member = User::find($id)) {
             return $this->api([], false, 500, '不存在此会员.');
         }
         if (!$this->activityService->isCoach($user)) {
