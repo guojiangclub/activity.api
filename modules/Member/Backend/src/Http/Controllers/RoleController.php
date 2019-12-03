@@ -13,13 +13,13 @@ namespace GuoJiangClub\Member\Backend\Http\Controllers;
 
 use DB;
 
-use ElementVip\Store\Backend\Repositories\UserRepository;
 use Encore\Admin\Facades\Admin as LaravelAdmin;
 use Encore\Admin\Layout\Content;
 use Excel;
 use GuoJiangClub\Activity\Core\Models\Role;
 use GuoJiangClub\Activity\Core\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Validator;
 use iBrand\Backend\Http\Controllers\Controller;
 
@@ -153,9 +153,6 @@ class RoleController extends Controller
         if (is_array($status)) {
             return response()->json($status);
         }
-        $selectPermissions = [];
-
-        $allPermissions = $this->permission->pluck('id')->toArray();
 
         $role = Role::find($id);
 
@@ -253,8 +250,8 @@ class RoleController extends Controller
         if (true == $delete) {
             return $this->userRepository->getDeletedUsersPaginated($where);
         }
-
-        return $this->userRepository->searchUserPaginated($where, 20);
+return null;
+  //      return $this->userRepository->searchUserPaginated($where, 20);
     }
 
     private function validatePrivate($operation = 'create')
@@ -266,7 +263,7 @@ class RoleController extends Controller
             ];
         } else {
             $rules = [
-                'name' => 'required |unique:el_roles',
+                'name' => 'required |unique:'.Config::get('entrust.roles_table'),
                 'display_name' => 'required',
             ];
         }

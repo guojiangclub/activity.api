@@ -1,24 +1,5 @@
-{{--@extends('member-backend::layout')--}}
+{!! Html::style(env("APP_URL").'assets/backend/libs/element/index.css') !!}
 
-{{--@section('title','会员列表')--}}
-
-{{--@section('after-styles-end')--}}
-        {{--<!-- 引入样式 -->--}}
-        {!! Html::style(env("APP_URL").'/assets/backend/libs/element/index.css') !!}
-
-{{--@stop--}}
-
-{{--@section('breadcrumbs')--}}
-    {{--<h2>{{$role->display_name}}角色用户管理</h2>--}}
-    {{--<ol class="breadcrumb">--}}
-        {{--<li><a href="{!!route('admin.RoleManagement.role.index')!!}"><i class="fa fa-dashboard"></i>首页</a></li>--}}
-        {{--<li><a href="{{route('admin.RoleManagement.role.index')}}">角色管理</a></li>--}}
-        {{--<li class="active">角色用户管理</li>--}}
-    {{--</ol>--}}
-{{--@endsection--}}
-
-
-{{--@section('content')--}}
 
     <div class="tabs-container">
         <div class="tab-content">
@@ -117,17 +98,15 @@
     </div>
 
     <div id="users_modal" class="modal inmodal fade" data-id="{{$role->id}}"></div>
-    {{--@endsection--}}
 
-{{--@section('before-scripts-end')--}}
-    {!! Html::script(env("APP_URL").'/assets/backend/libs/ladda/spin.min.js') !!}
-    {!! Html::script(env("APP_URL").'/assets/backend/libs/ladda/ladda.min.js') !!}
-    {!! Html::script(env("APP_URL").'/assets/backend/libs/ladda/ladda.jquery.min.js') !!}
-    {!! Html::script(env("APP_URL").'/assets/backend/libs/loader/jquery.loader.min.js') !!}
-    {!! Html::script(env("APP_URL").'/assets/backend/libs/jquery.el/el.common.js') !!}
+    {!! Html::script(env("APP_URL").'vendor/libs/ladda/spin.min.js') !!}
+    {!! Html::script(env("APP_URL").'vendor/libs/ladda/ladda.min.js') !!}
+    {!! Html::script(env("APP_URL").'vendor/libs/ladda/ladda.jquery.min.js') !!}
+    {!! Html::script(env("APP_URL").'vendor/libs/loader/jquery.loader.min.js') !!}
+    {!! Html::script(env("APP_URL").'assets/backend/libs/jquery.el/el.common.js') !!}
             <!-- 先引入 Vue -->
-    {!! Html::script(env("APP_URL").'/assets/backend/libs/element/vue.js') !!}
-    {!! Html::script(env("APP_URL").'/assets/backend/libs/element/index.js') !!}
+    {!! Html::script(env("APP_URL").'assets/backend/libs/element/vue.js') !!}
+    {!! Html::script(env("APP_URL").'assets/backend/libs/element/index.js') !!}
 
     <script>
         $('.checkbox').on('ifChecked', function (event) {
@@ -229,4 +208,3 @@
             });
         });
     </script>
-{{--@stop--}}
