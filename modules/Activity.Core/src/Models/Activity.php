@@ -12,9 +12,7 @@
 namespace GuoJiangClub\Activity\Core\Models;
 
 use Carbon\Carbon;
-use GuoJiangClub\Component\Point\Model\Point;
-use GuoJiangClub\Component\Product\Models\Goods;
-use GuoJiangClub\Component\User\Models\User;
+use iBrand\Component\Point\Models\Point;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -155,10 +153,5 @@ class Activity extends Model
         }
 
         return false;
-    }
-
-    public function goods()
-    {
-        return $this->belongsToMany(Goods::class, 'ac_activity_goods', 'activity_id', 'goods_id')->withPivot(['required', 'rate', 'price']);
     }
 }
