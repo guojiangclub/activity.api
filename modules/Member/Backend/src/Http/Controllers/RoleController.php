@@ -34,11 +34,9 @@ class RoleController extends Controller
      *
      * @param $role
      */
-    public function __construct(Role $role, Permission $permission, UserRepository $userRepository)
+    public function __construct(Role $role)
     {
         $this->role = $role;
-        $this->permission = $permission;
-        $this->userRepository = $userRepository;
     }
 
     public function index()
