@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace ElementVip\Member\Backend\Http\Controllers;
+namespace GuoJiangClub\Member\Backend\Http\Controllers;
 
 use DB;
 
