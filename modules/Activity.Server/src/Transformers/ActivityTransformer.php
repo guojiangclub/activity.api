@@ -66,19 +66,22 @@ class ActivityTransformer extends BaseTransformer
                 break;
         }
 
+        $model->payments = $model->payments()->first();
+
         if ($canceled = request('canceled') and 1 == $canceled) {
             if ($user = request()->user() and $member = $model->members()->where('user_id', $user->id)->where('role', 'user')->where('status', 3)->orderBy('created_at', 'desc')->first()) {
                 $model->member_status = $member->status;
                 $model->member_pay_status = $member->pay_status;
+                $model->payments = $member->payment;
             }
         } else {
             if ($user = auth('api')->user() and $member = $model->members()->where('user_id', $user->id)->where('role', 'user')->orderBy('created_at', 'desc')->first()) {
                 $model->member_status = $member->status;
                 $model->member_pay_status = $member->pay_status;
+                $model->payments = $member->payment;
             }
         }
 
-        $model->payments = $model->payments()->first();
         $model->time_section = $this->getFormatTime($model->starts_at, $model->ends_at);
         $model->has_form = false;
         if ((0 != $model->statement_id) || (isset($model->form) && $model->form)) {
@@ -97,10 +100,10 @@ class ActivityTransformer extends BaseTransformer
         $ends_at_time = strtotime($ends_at);
         $ends_at_day = $this->day[date('w', $ends_at_time)];
         if (date('Y-m-d', $starts_at_time) == date('Y-m-d', $ends_at_time)) {
-            return date('Y/m/d', $starts_at_time).' '.$starts_at_day.' '.date('H:i', $starts_at_time).'-'.date('H:i', $ends_at_time);
+            return date('Y/m/d', $starts_at_time) . ' ' . $starts_at_day . ' ' . date('H:i', $starts_at_time) . '-' . date('H:i', $ends_at_time);
         }
 
-        return date('Y/m/d', $starts_at_time).' '.$starts_at_day.' '.date('H:i', $starts_at_time).' - '.
-                date('Y/m/d', $ends_at_time).' '.$ends_at_day.' '.date('H:i', $ends_at_time);
+        return date('Y/m/d', $starts_at_time) . ' ' . $starts_at_day . ' ' . date('H:i', $starts_at_time) . ' - ' .
+            date('Y/m/d', $ends_at_time) . ' ' . $ends_at_day . ' ' . date('H:i', $ends_at_time);
     }
 }
