@@ -44,9 +44,9 @@ class ActivityController extends Controller
     /**
      * ActivityController constructor.
      *
-     * @param Role               $role
-     * @param Activity           $activity
-     * @param PointRepository    $pointRepository
+     * @param Role $role
+     * @param Activity $activity
+     * @param PointRepository $pointRepository
      * @param ActivityRepository $activityRepository
      */
     public function __construct(Role $role,
@@ -73,15 +73,15 @@ class ActivityController extends Controller
 
         if (!empty($time) && -1 != $time) {
             $where[] = ['ends_at', '<=', date('Y-m-d 23:59:59')];
-            $where[] = ['starts_at', '>=', date('Y-m-d 00:00:00', strtotime('-'.$time.' day'))];
+            $where[] = ['starts_at', '>=', date('Y-m-d 00:00:00', strtotime('-' . $time . ' day'))];
         } else {
             if (request()->input('starts_at')) {
-                $starts_at = request()->input('starts_at').' 00:00:00';
+                $starts_at = request()->input('starts_at') . ' 00:00:00';
                 $where[] = ['starts_at', '>=', $starts_at];
             }
 
             if (request()->input('ends_at')) {
-                $ends_at = request()->input('ends_at').' 23:59:59';
+                $ends_at = request()->input('ends_at') . ' 23:59:59';
                 $where[] = ['ends_at', '<=', $ends_at];
             }
         }
@@ -93,7 +93,7 @@ class ActivityController extends Controller
         if (1 == request('excel')) {
             $file = $this->getDataExcel($this->activity, $where);
 
-            return Response::download(storage_path().'/exports/'.$file);
+            return Response::download(storage_path() . '/exports/' . $file);
         }
 
         $activities = $this->getData($this->activity, $where);
@@ -121,7 +121,7 @@ class ActivityController extends Controller
         $forms = ActivityForm::all(['id', 'name']);
         if ($coach) {
             $prefix = config('ibrand.app.database.prefix', 'ibrand_');
-            $users = DB::table($prefix.'role_user')->where('role_id', $coach->id)->get(['user_id']);
+            $users = DB::table($prefix . 'role_user')->where('role_id', $coach->id)->get(['user_id']);
             if (count($users) > 0) {
                 $usersId = array_column($users->toArray(), 'user_id');
                 $coachArray = User::whereIn('id', $usersId)->get();
@@ -292,7 +292,7 @@ class ActivityController extends Controller
                             $payment_info = Payment::find($id);
                             DB::rollBack();
 
-                            return response()->json(['status' => false, 'error_code' => 0, 'error' => '电子票: '.$payment_info->title.' 已经有人报名， 无法删除']);
+                            return response()->json(['status' => false, 'error_code' => 0, 'error' => '电子票: ' . $payment_info->title . ' 已经有人报名， 无法删除']);
                             break;
                         }
 
@@ -375,7 +375,8 @@ class ActivityController extends Controller
         $coachArray = [];
         $coach = $this->role->where('name', 'coach')->first();
         if ($coach) {
-            $users = DB::table('el_role_user')->where('role_id', $coach->id)->get(['user_id']);
+            $prefix = config('ibrand.app.database.prefix', 'ibrand_');
+            $users = DB::table($prefix . 'role_user')->where('role_id', $coach->id)->get(['user_id']);
             if (count($users) > 0) {
                 $usersId = array_column($users->toArray(), 'user_id');
                 $coachArray = User::whereIn('id', $usersId)->get();
@@ -508,7 +509,7 @@ class ActivityController extends Controller
             '退款说明',
             '活动介绍',
         ];
-        $name = 'Activities_'.date('Y_m_d_H_i_s', time());
+        $name = 'Activities_' . date('Y_m_d_H_i_s', time());
         Excel::create($name, function ($excel) use ($data, $title) {
             $excel->sheet('活动列表', function ($sheet) use ($data, $title) {
                 $sheet->prependRow(1, $title);
