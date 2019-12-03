@@ -45,5 +45,16 @@ class MemberBackendTablesSeeder extends Seeder
             'updated_at' => date('Y-m-d H:i:s', time()),
         ]);
 
+        $second = DB::table(config('admin.database.menu_table'))->insertGetId([
+            'parent_id' => $parent,
+            'order' => $lastOrder++,
+            'title' => '角色管理',
+            'icon' => 'iconfont icon-jiaoseguanli',
+            'blank' => 1,
+            'uri' => 'member/RoleManagement/role/index',
+            'created_at' => date('Y-m-d H:i:s', time()),
+            'updated_at' => date('Y-m-d H:i:s', time()),
+        ]);
+
     }
 }

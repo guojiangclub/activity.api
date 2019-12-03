@@ -357,39 +357,4 @@ class RoleController extends Controller
 
         return $this->ajaxJson(true, [], 200, '');
     }
-
-    /**
-     * 导入会员.
-     *
-     * @return mixed
-     */
-    public function importUser()
-    {
-        $role_id = request('role_id');
-
-        return view('member-backend::role.includes.import-user', compact('role_id'));
-
-    }
-
-    public function saveImport()
-    {
-        $data = [];
-        $filename = 'public' . request('upload_excel');
-        $role_id = request('role_id');
-        $role = Role::find($role_id);
-
-        Excel::load($filename, function ($reader) use ($role_id, $role) {
-            $reader = $reader->getSheet(0);
-            //获取表中的数据
-            $results = $reader->toArray();
-
-            foreach ($results as $key => $value) {
-                if (0 != $key and !empty($value[0]) and $user = User::where(['mobile' => $value[0]])->first() and !$user->hasRole($role->name)) {
-                    $user->attachRole($role_id);
-                }
-            }
-        });
-
-        return $this->ajaxJson(true, $data, 200, '');
-    }
 }

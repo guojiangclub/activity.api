@@ -53,9 +53,6 @@ $router->group(['prefix' => 'admin/member/RoleManagement'], function () use ($ro
     $router->get('role/UsersSearchList', 'RoleController@UsersSearchList')->name('admin.RoleManagement.role.UsersSearchList');
 
     $router->post('role/{id}/allotDelRole', 'RoleController@allotDelRole')->name('admin.RoleManagement.role.allotDelRole');
-
-    $router->get('role/importUser', 'RoleController@importUser')->name('admin.RoleManagement.role.importUser');
-    $router->post('role/importUser/saveImport', 'RoleController@saveImport')->name('admin.RoleManagement.role.importUser.saveImport');
 });
 
 //SVIP管理
