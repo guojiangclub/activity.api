@@ -31,9 +31,6 @@ class LateSchedule extends Scheduling
                 } elseif ($activity->starts_at < Carbon::now() and $activity->ends_at > Carbon::now()) {
                     $activity->status = 2;
                 } elseif ($activity->ends_at < Carbon::now()) {
-                    if (2 == $activity->status) {
-                        $this->notify($activity);
-                    }
                     $activity->status = 3;
                 }
                 $activity->save();
@@ -41,15 +38,4 @@ class LateSchedule extends Scheduling
         })->everyMinute();
     }
 
-    private function notify($activity)
-    {
-        foreach ($activity->members as $member) {
-            if (empty($member->signed_at) and 1 == $member->status and 'user' == $member->role) {
-                if ($user = $member->user) {
-                    /*$user->notify((new Late(['activity' => $activity]))->delay(Carbon::now()->addSeconds(10)));*/
-                    $user->notify((new Late(['activity' => $activity]))->delay(Carbon::now()->addMinutes($activity->delay_sign + 1)));
-                }
-            }
-        }
-    }
 }

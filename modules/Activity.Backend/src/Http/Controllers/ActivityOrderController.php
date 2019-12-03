@@ -13,7 +13,6 @@ namespace GuoJiangClub\Activity\Backend\Http\Controllers;
 
 use Carbon\Carbon;
 use DB;
-use GuoJiangClub\Component\User\Models\User;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use Excel;
@@ -22,8 +21,7 @@ use GuoJiangClub\Activity\Backend\Models\DiscountCoupon;
 use GuoJiangClub\Activity\Core\Models\Answer;
 use GuoJiangClub\Activity\Core\Models\Member;
 use GuoJiangClub\Activity\Core\Models\Payment;
-use GuoJiangClub\Activity\Core\Notifications\Join;
-use GuoJiangClub\Activity\Core\Notifications\Signed;
+use GuoJiangClub\Activity\Core\Models\User;
 use GuoJiangClub\Activity\Core\Repository\CouponRepository;
 use GuoJiangClub\Activity\Core\Repository\DiscountRepository;
 use GuoJiangClub\Activity\Server\Services\ActivityService;
@@ -338,10 +336,7 @@ class ActivityOrderController extends Controller
             $member->signed_at = Carbon::now();
             $member->status = 2;
             $member->save();
-            $user->notify(new Signed([
-                'activity' => $activity,
-                'member' => $member,
-            ]));
+
 
             $coupon = null;
             if ($discount = $this->discountRepository->getDiscountByCode(settings('activity_coupon_code_sign'), 1) and $this->couponRepository->canGetCoupon($discount, $user)) {

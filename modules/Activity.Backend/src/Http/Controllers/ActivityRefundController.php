@@ -188,7 +188,6 @@ class ActivityRefundController extends Controller
         $refund->save();
         $this->refundLog($refund->id, 0, $uid, 'receipt', '已退款，本次申请已完成', $remarks);
 
-        /*event('refund.service.changed', [$refund, '已退款，本次申请已完成']);*/
     }
 
     public function refundLog($refund_id, $user_id, $admin_id, $action, $note, $remarks = '')

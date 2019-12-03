@@ -24,7 +24,6 @@ use GuoJiangClub\Activity\Core\Models\Member;
 use GuoJiangClub\Activity\Core\Models\Payment;
 use GuoJiangClub\Activity\Core\Models\Role;
 use GuoJiangClub\Activity\Core\Models\Statement;
-use GuoJiangClub\Activity\Core\Notifications\Rewards;
 use GuoJiangClub\Activity\Core\Repository\ActivityFormRepository;
 use GuoJiangClub\Activity\Core\Repository\ActivityRepository;
 use iBrand\Backend\Http\Controllers\Controller;

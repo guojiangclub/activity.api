@@ -108,20 +108,7 @@
 
         function getFeeDiscount() {
             fee_discount = 'yes';
-            //以下代码暂时注释20180309
-            {{--$.ajax({--}}
-                {{--type: 'POST',--}}
-                {{--url: '{{route('activity.admin.filterFreeDiscount')}}',--}}
-                {{--data: {_token: $('meta[name="_token"]').attr('content')},--}}
-                {{--async: false,--}}
-                {{--success: function (result) {--}}
-                    {{--if (result.status) {--}}
-                        {{--fee_discount = 'yes';--}}
-                    {{--} else {--}}
-                        {{--fee_discount = 'no';--}}
-                    {{--}--}}
-                {{--}--}}
-            {{--});--}}
+
         }
 
         $(".vim-activity-store").on('click', function () {

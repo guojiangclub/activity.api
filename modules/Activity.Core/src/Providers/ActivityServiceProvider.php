@@ -20,7 +20,9 @@ use GuoJiangClub\Activity\Core\Repository\CouponRepository;
 use GuoJiangClub\Activity\Core\Repository\DiscountRepository;
 use GuoJiangClub\Activity\Core\Repository\Eloquent\CouponRepositoryEloquent;
 use GuoJiangClub\Activity\Core\Repository\Eloquent\DiscountRepositoryEloquent;
+use GuoJiangClub\Activity\Core\Schedule\LateSchedule;
 use GuoJiangClub\Activity\Server\Transformers\FavoriteTransformer;
+use iBrand\Scheduling\ScheduleList;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 
@@ -36,24 +38,26 @@ class ActivityServiceProvider extends ServiceProvider
         ]);
 
         $this->publishes([
-            __DIR__.'/../../factories/ActivityFactory.php' => database_path('factories/ActivityFactory.php'),
+            __DIR__ . '/../../factories/ActivityFactory.php' => database_path('factories/ActivityFactory.php'),
         ], 'ActivityFactory');
 
         if (!class_exists('EntrustSetupTables')) {
             $timestamp = date('Y_m_d_His', time() + 100);
             $this->publishes([
-                __DIR__.'/../../migrations/entrust_setup_tables.php.stub' => database_path()."/migrations/{$timestamp}_entrust_setup_tables.php",
+                __DIR__ . '/../../migrations/entrust_setup_tables.php.stub' => database_path() . "/migrations/{$timestamp}_entrust_setup_tables.php",
             ], 'migrations');
         }
     }
 
     protected function registerMigrations()
     {
-        return $this->loadMigrationsFrom(__DIR__.'/../../migrations');
+        return $this->loadMigrationsFrom(__DIR__ . '/../../migrations');
     }
 
     public function register()
     {
+        $this->app->make(ScheduleList::class)->add(LateSchedule::class);
+
         $this->app->bind(
             ActivityAction::class,
             ActivityAction::class
