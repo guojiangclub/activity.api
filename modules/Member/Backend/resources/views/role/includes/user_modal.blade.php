@@ -1,4 +1,4 @@
-@extends('store-backend::layouts.bootstrap_modal')
+@extends('member-backend::layouts.bootstrap_modal')
 
 @section('modal_class')
     modal-lg
@@ -8,7 +8,7 @@
 @stop
 
 @section('after-styles-end')
-    {!! Html::style(env("APP_URL").'/assets/backend/libs/ladda/ladda-themeless.min.css') !!}
+    {!! Html::style(env("APP_URL").'vendor/libs/ladda/ladda-themeless.min.css') !!}
 @stop
 
 
@@ -88,9 +88,7 @@
         var roleIndex='{{route('admin.RoleManagement.role.index')}}';
     </script>
     <button type="button" class="btn btn-link" data-dismiss="modal" style="margin-right: 80px;">取消</button>
-    {{--<button type="button"  class="ladda-button btn btn-primary" > 确定</button>--}}
     @include('member-backend::role.includes.script')
-
 @stop
 
 

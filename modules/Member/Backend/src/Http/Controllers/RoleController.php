@@ -307,16 +307,6 @@ return null;
     public function userModal($id)
     {
         return view('member-backend::role.includes.user_modal', compact('id'));
-
-        return LaravelAdmin::content(function (Content $content) use ($id) {
-//            $content->header('角色用户管理');
-
-            $content->breadcrumb(
-                ['text' => '角色管理', 'url' => 'member/RoleManagement/role/index', 'no-pjax' => 1,'left-menu-active'=>'角色管理']
-            );
-
-            $content->body(view('member-backend::role.includes.user_modal', compact('id')));
-        });
     }
 
     public function UsersSearchList()
