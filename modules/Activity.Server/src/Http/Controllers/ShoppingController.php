@@ -360,7 +360,6 @@ class ShoppingController extends Controller
                 'action' => 'activity',
                 'note' => '活动报名',
                 'value' => (-1) * $payment->point,
-                'valid_time' => 0,
                 'item_type' => Payment::class,
                 'item_id' => $payment->id,
             ]);
