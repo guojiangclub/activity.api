@@ -133,10 +133,6 @@ class MemberController extends Controller
         $member->signed_at = Carbon::now();
         $member->status = 2;
         $member->save();
-        $user->notify(new Signed([
-            'activity' => $activity,
-            'member' => $member,
-        ]));
 
         event('on.member.activity.status.change', [$user->id, $activity, 'act_sign']);
 
