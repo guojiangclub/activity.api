@@ -31,6 +31,18 @@ class ActivityAdminSeeder extends Seeder
             'updated_at' => date('Y-m-d H:i:s', time()),
         ]);
 
+        DB::table(config('admin.database.menu_table'))->insertGetId([
+            'parent_id' => $parent,
+            'order' => $lastOrder++,
+            'title' => '活动系统设置',
+            'icon' => 'fa-connectdevelop',
+            'blank' => 1,
+            'uri' => 'activity/settings/domain',
+            'created_at' => date('Y-m-d H:i:s', time()),
+            'updated_at' => date('Y-m-d H:i:s', time()),
+        ]);
+
+
         $first = DB::table(config('admin.database.menu_table'))->insertGetId([
             'parent_id' => $parent,
             'order' => $lastOrder++,
