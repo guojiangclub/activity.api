@@ -13,21 +13,10 @@ namespace GuoJiangClub\Activity\Server\Http\Controllers;
 
 use GuoJiangClub\Activity\Core\Models\User;
 use iBrand\Component\User\Models\UserBind;
-use iBrand\Component\User\Repository\UserRepository;
-use iBrand\Component\User\Repository\UserBindRepository;
 use iBrand\Sms\Facade as Sms;
 
 class AuthController extends Controller
 {
-	protected $userRepository;
-	protected $userBindRepository;
-
-	public function __construct(UserRepository $userRepository, UserBindRepository $userBindRepository)
-	{
-		$this->userRepository     = $userRepository;
-		$this->userBindRepository = $userBindRepository;
-	}
-
 	/**
 	 * @return \Illuminate\Http\Response|mixed
 	 *
@@ -44,9 +33,9 @@ class AuthController extends Controller
 
 		$is_new = false;
 
-		if (!$user = $this->userRepository->getUserByCredentials(['mobile' => $mobile])) {
+		if (!$user = User::where('mobile', $mobile)->first()) {
 			$data   = ['mobile' => $mobile];
-			$user   = $this->userRepository->create($data);
+			$user   = User::create($data);
 			$is_new = true;
 		}
 
