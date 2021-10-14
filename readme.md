@@ -29,7 +29,7 @@ php artisan db:seed --class 'GuoJiangClub\Activity\Backend\Seeds\ActivityAdminSe
 
 ## 小程序
 
-小程序源码地址：[果酱互动小程序源码](https://gitee.com/guojiangclub/activity.miniprogram)
+小程序源码地址：[果酱互动小程序源码](https://github.com/guojiangclub/activity.miniprogram)
 
 ## 交流
 
